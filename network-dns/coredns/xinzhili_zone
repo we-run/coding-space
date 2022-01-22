@@ -1,0 +1,15 @@
+
+@ 600 IN SOA xinzhili.cn. nobody.xinzhili.cn. (
+    11  ; serial
+    3600    ; refresh (1 hour)
+    1200    ; retry (30 mins)
+    86400   ; expire
+    360 ; min TTL (6 mins)
+    )
+
+test    IN A     127.0.0.1
+gw      IN A     192.168.1.1
+dev     IN A     192.168.15.8
+napi    IN A     172.16.10.16 
+testapi    IN A     172.16.10.16 
+napi    IN A     172.16.10.16 

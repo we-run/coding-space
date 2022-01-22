@@ -1,0 +1,6 @@
+// the configured options and settings for HELLO
+#define Hello_VERSION_MAJOR @Hello_VERSION_MAJOR@
+#define Hello_VERSION_MINOR @Hello_VERSION_MINOR@
+
+
+#cmakedefine USE_MYMATH

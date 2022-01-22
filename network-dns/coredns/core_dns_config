@@ -1,0 +1,38 @@
+.:53 {
+  # 绑定interface ip
+  bind 172.16.10.16
+  # 先走本机的hosts
+  # https://coredns.io/plugins/hosts/
+  hosts {
+    # 自定义sms.service search.service 的解析
+    # 因为解析的域名少我们这里直接用hosts插件即可完成需求
+    # 如果有大量自定义域名解析那么建议用file插件使用 符合RFC 1035规范的DNS解析配置文件
+    #172.16.10.16 xzlcorp.com
+    #172.16.10.16 xinzhili.cn
+    # ttl
+    ttl 60
+    # 重载hosts配置
+    reload 1m
+    # 继续执行
+    fallthrough
+  }
+
+  # file enables serving zone data from an RFC 1035-style master file.
+  # https://coredns.io/plugins/file/
+  # file service.signed service
+  file xzlcorp_zone xzlcorp.com
+  file xinzhili_zone  xinzhili.cn
+  # 最后所有的都转发到系统配置的上游dns服务器去解析
+  forward . /etc/resolv.conf
+  # 缓存时间ttl
+  cache 10
+  # 自动加载配置文件的间隔时间
+  reload 6s
+  # 输出日志
+  log {
+    class all
+  }
+  # 输出错误
+  errors
+
+}

@@ -1,0 +1,10 @@
+
+
+
+
+
+double mysqrt(double v);
+
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP
+
