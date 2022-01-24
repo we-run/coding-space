@@ -1,0 +1,16 @@
+{
+  "name": "manual-proj",
+  "version": "1.0.0",
+  "description": "manual project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/standalone": "^7.15.3",
+    "babel-plugin-module-resolver-standalone": "^0.0.2",
+    "requirejs-babel": "^0.0.9"
+  }
+}
