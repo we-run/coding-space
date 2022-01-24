@@ -1,13 +1,16 @@
-add_library(MathFunctions mysqrt.cxx)
 
 
 configure_file(MathFunctionConfig.h.in MathFunction.h)
+
+
+add_library(MathFunctions mysqrt.cxx)
+
 
 target_include_directories(MathFunctions INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
 
 install(TARGETS MathFunctions DESTINATION lib)
-install(FILES MathFunctions.h DESTINATION include)
+install(FILES MathFunction.h DESTINATION include)
 
 
 

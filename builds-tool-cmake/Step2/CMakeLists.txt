@@ -15,7 +15,7 @@ add_executable(Hello hello.cc)
 
 # 自动生成头文件 ，configure a header file to pass some of the CMake settings
 # to the source code
-configure_file(HelloConfig.h.in HelloConfig.h)
+configure_file(HelloConfig.h.in Hello.h)
 
 
 # ###  Step 3 --- 指定C++标准
@@ -28,7 +28,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Step 4 --- 封装和依赖外部库
 # Now let us make the MathFunctions library optional. While for the Hello there really isn't any need to do so, for larger projects this is a common occurrence. The first step is to add an option to the top-level CMakeLists.txt file
-option(USE_MYMATH "Use Hello provided math implementation" ON)
+option(USE_MYMATH "Use Hello provided math implementation" TRUE)
 
 if(USE_MYMATH)
     # add the MathFunctions library

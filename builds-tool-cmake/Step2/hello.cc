@@ -7,10 +7,20 @@
 #include <memory>
 #include <cstdlib>
 #include <math.h>
+#include "Hello.h"
 
 #ifdef USE_MYMATH
-#include "MathFunction.h"
+#include <MathFunction.h>
 #endif
+
+namespace MF
+{
+    template <typename T>
+    T minimum(const T &lhs, const T &rhs)
+    {
+        return lhs < rhs ? lhs : rhs;
+    }
+}
 
 int main(int argc, char *argv[])
 {
@@ -19,8 +29,11 @@ int main(int argc, char *argv[])
     std::cout << "Hello World!>1223> \n";
     // const double inputValue = std::stod(argv[1]);
     const double inputValue = 0.1;
+    int n1 = 1, n2 = 2;
+
 #ifdef USE_MYMATH
-    const double outputValue = mysqrt(inputValue);
+    const double outputValue = MF::mysqrt(inputValue);
+    // MF::my_swap<int>(n1, n2);
 #else
     std::cout << "IN";
     const double outputValue = sqrt(inputValue);
@@ -35,5 +48,11 @@ int main(int argc, char *argv[])
     //     std::cout << "Usage: " << argv[0] << " number" << std::endl;
     //     return 1;
     // }
+
+    std::cout
+        << n1 << " vs_before" << n2;
+    std::cout << MF::minimum<int>(n1, n2);
+    std::cout
+        << n1 << " vs_after " << n2;
     return 1;
 }
