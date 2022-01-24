@@ -1,4 +1,6 @@
-
+## 说明
+    1. 注意当前目录分布，codes目录下为下载的源码项目，在本地进行试验调试分享使用，避免提交到github
+    2. 
 
 
 ### [NodeJS](https://github.com/nodejs/node)
