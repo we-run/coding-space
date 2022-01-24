@@ -1,5 +1,7 @@
 
 
+**/__pycache__
+
 build/
 **/CMakeFiles/
 **/cmake_install.cmake
