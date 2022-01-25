@@ -20,6 +20,8 @@
 
 ├── base-javascript // javascript语言（ES5/ES6）及其相关生态特性试验
 
+├── base-lua // lua语言实践之路
+
 ├── base-php // php 实践
 
 ├── base-python // python及其相关生态特性试验
@@ -48,6 +50,12 @@
 
 ├── ci_cd-jenkins
 
+├── efficient-tools-alfred // Afired 引发的一场自动化办公工具链的思考和实践
+
+├── efficient-tools-v2ray // v2ray 接触有事干
+
+├── efficient-tools-vim // vim 技巧锤炼
+
 ├── lib-ioproject-reactor  // 三方库： reactor 特性验证
 
 ├── lib-netty // 三方项目： netty 实践
@@ -69,6 +77,8 @@
 ├── platform-flutter // 应用平台 ： flutter 深入学习
 
 ├── platform-k8s // 微服务平台： Kubernetes
+
+├── platform-openresty // 基于 NGINX 和 LuaJIT 的 Web 平台 , 通过 Lua 扩展 NGINX 实现的可伸缩的 Web 平台
 
 ├── source-code-shared // 源码分享目录：
 
