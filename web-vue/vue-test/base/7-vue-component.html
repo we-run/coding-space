@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blank page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style rel="stylesheet">
+    </style>
+    <script type="application/javascript">
+        window.onload = function () {
+            Vue.component('todo-item', {
+                template: '<div>这是一个待办事项: {{todo.content}}</div>',
+                props: ['todo']
+            })
+            this.app = new Vue({
+                el: '#app',
+                data: {
+                    groceryList: [
+                        {
+                            id: 0,
+                            content: 'hahha'
+                        }
+                    ]
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <todo-item
+                    v-for="item in groceryList"
+                    v-bind:todo="item"
+                    v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+</body>
+</html>

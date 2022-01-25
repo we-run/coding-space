@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声明式渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style rel="stylesheet">
+        p {
+            margin: 0px;
+            padding: 0px;
+            border: 1px red solid;
+        }
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slide-fade-enter, .slide-fade-leave-to
+            /* .slide-fade-leave-active for below version 2.1.8 */ {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+    <script type="application/javascript">
+        window.onload = function () {
+            this.app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue HaHa!',
+                    list: [
+                        {
+                            content: 'new Vue({...}) 仅仅是一个VM实例'
+                        },
+                        {
+                            content: '只有初始化时的data对象的属性才具备绑定效果（实例后赋值的没有）'
+                        },
+                        {
+                            content: 'Object.freeze(vm) 后，绑定效果消失'
+                        },
+                        {
+                            content: 'VM 实例可以直接调用 "$" 前缀的方法或者属性，如：vm.$data = {} , vm.$ele = 获取某元素，其他如$watch 方法在监听的属性改变后调用'
+                        },
+                        {
+                            content: 'vm实例的声明周期hook： beforeCreate、created、beforeMount、mounted、beforeUpdate、updated、beforeDestroy、destoryed'
+                        },
+                        {
+                            content: '每个vue的指令 都可以放入js的单个表达式，而不能放入js代码块，表达式可以访问全局白名单变量如Date，不能访问用户定义变量'
+                        }
+                    ]
+                },
+                beforeCreate: function () {
+                    console.log('beforeCreate call')
+                },
+                created: function () {
+                    console.log('a is ' + this.message);
+                },
+                mounted: function () {
+                    console.log('vue instance mounted')
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <div id="recordlist">
+            <ol>
+                <li v-for="ele in list">{{ele.content}}</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

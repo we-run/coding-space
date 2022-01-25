@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on 处理用户输入事件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style rel="stylesheet">
+    </style>
+    <script type="application/javascript">
+        window.onload = function () {
+            this.app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue.js!'
+                },
+                methods: {
+                    reverseMessage: function () {
+                        this.message = this.message.split('').reverse().join('')
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">翻转字符串？</button>
+        <button @click="reverseMessage">翻转字符串？</button>
+    </div>
+</body>
+</html>

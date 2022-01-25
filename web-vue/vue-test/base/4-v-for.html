@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blank page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style rel="stylesheet">
+    </style>
+    <script type="application/javascript">
+        window.onload = function () {
+            this.app = new Vue({
+                el: '#app',
+                data: {
+                    items: [{ title: 1, show: true}]
+                },
+                methods: {
+                    generateList: function () {
+                        for (i = 0; i < 10; i++ ) {
+                            this.items.push({title: i+1, show: true})
+                        }
+                    },
+                    mytoggle: function () {
+
+                        this.items[1].show = !this.items[1].show
+                    }
+                }
+            })
+            this.app.generateList();
+        }
+    </script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in items" v-if="item.show == true">
+            {{ item.title }}
+        </li>
+    </ul>
+    <button v-on:click="mytoggle">试一试V-IF的作用</button>
+</div>
+</body>
+</html>

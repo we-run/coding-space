@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blank page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style rel="stylesheet">
+    </style>
+    <script type="application/javascript">
+        window.onload = function () {
+            this.app = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'once bind'
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <span v-once>这个将不会改变: {{ msg }}</span>
+    </div>
+</body>
+</html>

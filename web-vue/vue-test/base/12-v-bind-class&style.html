@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blank page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style rel="stylesheet">
+        .static {
+            background-color: red;
+        }
+        .active {
+            font-size: 16pt;
+        }
+        .text-danger {
+            border: 1px blue solid;
+        }
+    </style>
+    <script type="application/javascript">
+        window.onload = function () {
+            this.app = new Vue({
+                el: '#app',
+                data: {
+                    isActive: true,
+                    hasError: true,
+                    classObj: {
+                        class1 : true,
+                        class2 : false
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"> this is class toggle</div>
+        <div v-bind:class="classObj"> this is class object bind</div>
+    </div>
+</body>
+</html>

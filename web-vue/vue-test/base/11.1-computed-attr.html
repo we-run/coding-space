@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blank page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
+    <!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+
+    <style rel="stylesheet">
+    </style>
+    <script type="application/javascript">
+        window.onload = function () {
+            this.app = new Vue({
+                el: '#app',
+                created: function () {
+                    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+                },
+                data: {
+                    question: '',
+                    answer: 'I cannot give you an answer until you ask a question!'
+                },
+                watch: {
+                    question: function (newValue, oldValue) {
+                        console.log(newValue, oldValue)
+                        this.debouncedGetAnswer()
+                    }
+                },
+                methods: {
+                    getAnswer: function () {
+                        if (this.question.indexOf('?') == -1) {
+                            this.answer = 'Waiting for you to stop typing...'
+                        }
+                        var vm = this
+                        axios
+                            .get('https://yesno.wtf/api')
+                            .then(function (response) {
+                                vm.answer = _.capitalize(response.data.answer)
+                            })
+                            .catch(function (error) {
+                                vm.answer = 'Error! Could not reach the API. ' + error
+                            })
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <p>
+            Ask a question:
+            <input v-model="question" />
+        </p>
+        <p>{{ answer }}</p>
+    </div>
+</body>
+</html>

@@ -33,15 +33,23 @@
 
 ├── builds-tool-cmake // 构建工具： cmake 特性验证
 
+├── builds-tool-cocoapods // 不完全包管理工具：cocoapods原理解析
+
 ├── builds-tool-fastlane // 构建工具： fastlane 特性验证
 
 ├── builds-tool-gradle // 构建工具： gradle 特性验证
 
 ├── builds-tool-webpack // 构建工具： webpack 特性验证
 
+├── ci_cd-gitlab_runner
+
+├── ci_cd-jenkins
+
 ├── lib-ioproject-reactor  // 三方库： reactor 特性验证
 
 ├── network-dns  // 网络原理： DNS 特性验证
+
+├── network-vpn // 网络原理： vpn工作机制
 
 ├── os-android // 操作系统： android 系统深入学习
 
@@ -49,7 +57,15 @@
 
 ├── os-linux // 操作系统： ios 系统深入学习
 
+├── platform-electron
+
 ├── platform-flutter // 应用平台 ： flutter 深入学习
+
+├── platform-k8s
+
+├── source-code-shared
+
+├── team-blog
 
 ├── web-css // web技术 ： css
 

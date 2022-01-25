@@ -9,6 +9,8 @@
     1. libuv的EventLoop
     2. Node的模块加载机制
     3. 自定义内建模块、文件模块
+    4. [V8和Node对异步的支持改进](https://v8.js.cn/blog/fast-async/) >> 详细论述异步的处理历史过程
+    5. [Torque 简介](https://v8.js.cn/docs/torque/)
 
 #### 源码调试
     1. git clone 源码
