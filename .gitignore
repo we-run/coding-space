@@ -34,4 +34,8 @@ out
 
 **/node_modules
 
-/team-blog
+
+
+**/yarn.lock
+
+**/go.sum

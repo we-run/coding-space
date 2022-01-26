@@ -1,0 +1,15 @@
+{
+  "name": "vuepress-power",
+  "version": "1.0.0",
+  "description": "we run coding space team's blog",
+  "main": "index.js",
+  "author": "daqiang@daqiang.me",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.35"
+  }
+}

@@ -1,0 +1,10 @@
+<html>
+    <head>
+        <title><$ title|shorten $></title>
+    </head>
+    <body>
+        {%- if body.display !== false -%}
+            <$ body.toString()|shorten(10) $>
+        {%- endif -%}
+    </body>
+</html>

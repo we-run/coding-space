@@ -1,0 +1,17 @@
+{% import "./widget/forms.html" as forms %}
+
+
+
+<html>
+    <head>
+        <title>{{ title|shorten }}</title>
+    </head>
+
+    <body>
+        {%- if body.display !== false %}
+        {%  block header %}{{ body.toString() }}{% endblock %}
+        {%- endif %}
+
+        {{ forms.label('Username) }}
+    </body>
+</html>
