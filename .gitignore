@@ -25,8 +25,13 @@ out
 **/Hello
 **/Hello
 
-
+# 源码试验目录
 **/codes
-
+# 运行时安装目录
+**/runtimes
+# 文档原件目录（可能有大型文件、音频、视频以及其他归档文件等）
+**/doc_raws
 
 **/node_modules
+
+/team-blog

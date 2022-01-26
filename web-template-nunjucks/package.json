@@ -1,0 +1,27 @@
+{
+  "name": "web-template-nunjucks",
+  "version": "1.0.0",
+  "description": "nunjucks test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/we-run/coding-space.git"
+  },
+  "keywords": [
+    "coding",
+    "elegant"
+  ],
+  "author": "daqiang@daqiang.me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/we-run/coding-space/issues"
+  },
+  "homepage": "https://github.com/we-run/coding-space#readme",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "nunjucks": "^3.2.3"
+  }
+}

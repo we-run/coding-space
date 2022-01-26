@@ -6,11 +6,12 @@
     2. 项目的所有提交记录，均需要使用英文表述
     3. 所有目录和文件命名，均需要使用英文，并且，对于一级目录命名，使用连字符'-'，连接多个单词
     4. 每次提交，需要确保使fork项目，更新到最新，使用 pull request 的方式，提交到主项目
-    5. 每个二级目录，对应一个技术栈或者技术主题，主题内部`README.md`首先需要介绍，该主题的建立原因和必备环境准备
+    5. 每个二级目录，对应一个技术栈或者技术主题，主题内部`README.md`首先需要介绍，该主题的建立原因（从何而来）和必备环境准备
 
 
 #### 项目说明
 .
+├── ai-tensorflow // 人工智能 - tensorflow特性试验
 
 ├── base-c_cpp // c/c++ 语言及其相关生态特性试验 
 
@@ -54,13 +55,27 @@
 
 ├── efficient-tools-v2ray // v2ray 接触有事干
 
+├── efficient-tools-git // git 锤炼
+
 ├── efficient-tools-vim // vim 技巧锤炼
+
+├── infra-aliyun // 基础设施 - 阿里云使用过程
+
+├── infra-aws // 基础设施 - aws使用过程
+
+├── infra-hashicorp // // 基础设施 - hashicorp 全家桶
+
+├── infra-runtime-env // coding-space 的所有运行环境安装目录，如Golang、php语言等运行环境，服务器运行依赖项等说明
 
 ├── lib-ioproject-reactor  // 三方库： reactor 特性验证
 
 ├── lib-netty // 三方项目： netty 实践
 
+├── lib-zookeeper // 三方项目： zookeeper实践
+
 ├── media-img_audio_video // 媒体数据处理： 图片、音频、视频
+
+├── network-dn42 // 网络环境 - dn42使用
 
 ├── network-dns  // 网络原理： DNS 特性验证
 
@@ -96,7 +111,15 @@
 
 ├── web-server-spring_boot // web服务器项目 ：基于spring搭建
 
-├── web-server-tomcat
+├── web-server-tomcat // web服务器项目 ： 基于tomcat搭建
 
-└── web-space // web规范 ： w3c 、 ESMAScript
+├── web-space // web规范 ： w3c 、 ESMAScript
+
+├── web-template-ejs // html模板 ： ejs使用
+
+├── web-template-nunjucks // html模板 ： nunjucks使用
+
+├── web-vue // vue框架
+
+└── workflow-ldap_confluence_jira // 工作流 - ldap_confluence_jira 搭建和使用
 

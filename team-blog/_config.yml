@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
+title: WE RUN
+subtitle: Coding Space
+description: 码出优雅 享受开源 </br> 探索未知 快意人生
+keywords: OpenSource Coding
+author: DerQiang
 language: en
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://daqiang.me/team-blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -28,10 +28,10 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: "working/**/*"
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -40,7 +40,10 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 highlight:
@@ -68,7 +71,12 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  k8s: '微服务基础设施'
+  vim: '编辑器Vim'
 tag_map:
+  ui: '用户交互'
+  ue: '用户体验'
+  knowledge: '基础知识'
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -97,7 +105,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-pure
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
