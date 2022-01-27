@@ -1,3 +1,27 @@
+#!/bin/sh 
+
+## 0. 检查基础环境设置，并对Mac电脑进行必要设置
+
+
+
+
+## 1. 拷贝需要进入博客系统的 Markdown 文件
+loop_get_target_fiels(){
+    for r in `ls -l | grep "^d" | awk '{print $NF}'`;
+    do
+        existed_doc="$(cd $r;pwd)/README.md"
+        if [[ -f $existed_doc ]];then
+            echo "==> 存在在文件 : ${existed_doc}"
+        else
+            echo "--->"
+        fi
+    done
+}
+loop_get_target_fiels
+
+## 2. 
+
+
 
 # ai-tensorflow
 # base-c_cpp
