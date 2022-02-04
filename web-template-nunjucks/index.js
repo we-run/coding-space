@@ -1,10 +1,8 @@
 const nunjucks = require("nunjucks");
-const chockidar = require("chokidar");
 
 nunjucks.configure({ autoescape: true });
 let results = nunjucks.renderString('Hello {{ username }}', { username: 'James' });
 console.log(results);
-
 
 // var env = nunjucks.configure(__dirname + '/views', { // 每次configure 就近生效
 //     autoescape: this,

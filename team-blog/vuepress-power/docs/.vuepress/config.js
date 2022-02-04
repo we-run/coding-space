@@ -3,10 +3,28 @@
 module.exports = {
     lang: 'zh-CN',
     title: 'WE RUN',
+    base: '/team',
     description: '这是我的第一个 VuePress 站点',
 
-    // 主题和它的配置
+    locales: {
+
+    },
+    pagePatterns: [
+        '**/*.md',
+        '!.vuepress',
+        // '!home',
+        '!node_modules'
+    ],
+    debug: true,
+    // 主题和它的配置, 接收主题名称、主题简称或主题的绝对路径
     theme: '@vuepress/theme-default',
+
+
+    // host: '127.0.0.1',
+    // port: 8081,
+
+
+    // boudler: "", 
     themeConfig: {
         logo: 'https://avatars.githubusercontent.com/u/82074362?s=400&u=60ff469045f530540b1a87a5e49b167e3bdd58da&v=4',
         navbar: [
@@ -100,4 +118,9 @@ module.exports = {
             }
         ]
     },
+
+
+    plugins: [
+        
+    ]
 }

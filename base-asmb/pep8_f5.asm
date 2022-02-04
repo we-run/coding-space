@@ -1,0 +1,34 @@
+BR 0x0005
+.BLOCK 2
+DECI 0x0003,d
+DECO 0x0003,d
+CHARO ' ',i
+CHARO '+',i
+CHARO ' ',i
+CHARO '1',i
+CHARO ' ',i
+CHARO '=',i
+CHARO ' ',i
+LDA 0x0003,d
+ADDA 1,i
+STA 0x0003,d
+DECO 0x0003,d
+STOP
+.END
+
+
+====
+
+
+BR 0x000D
+.BLOCK 2
+.ASCII " + 1 = \x00"
+DECI 0x0003,d
+DECO 0x0003,d
+STRO 0x0005,d
+LDA 0x0003,d
+ADDA 1,i
+STA 0x0003,d
+DECO 0x0003,d
+STOP
+.END

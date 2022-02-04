@@ -1,9 +1,9 @@
 #!/bin/sh
 
-echo "current host public ip address : "`curl -L ip.tool.lu`
+# echo "current host public ip address : "`curl -L ip.tool.lu`
 
 
-curl cip.cc/$0
+echo `curl cip.cc/$1`
 
 
 

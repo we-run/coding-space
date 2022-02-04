@@ -6,3 +6,6 @@ ls -F | grep "/$"
 
 ls -al | grep "^d"
 ls -al | grep "^-"
+
+
+# stat 查看lnode号

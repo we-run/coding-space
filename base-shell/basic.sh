@@ -25,6 +25,18 @@ echo '============ var defined ============'
 my_name="daqiang"
 echo ${my_name}
 
+echo '
+$# 传递到脚本参数的个数
+$* 一个单字符串显示出所有的参数
+$$ 脚本运行的当前进程ID号
+$! 后台运行的最后一个进程ID号
+$@ 脚本参数列表 同 $* 一样
+$- 显示Shell当前选项，与set命令功能相同
+$? 命令的退出状态，0表示没有错误
+'
+
+
+
 # 只读变量一经设定，不能再改
 echo '变量只读 : '
 my_url="http://daqiang.me"
@@ -42,7 +54,7 @@ my_name='damiao'
 ##### 单引号时，其中变量无效，内部不能转义单引号
 ##### 双引号时， 可以变量拼接，可以有转义字符
 ##### 拼接字符串
-echo "hello, "${my_name}""
+echo "hello, ${my_name}"
 echo 'hello, single '${my_name}'!'
 echo "\"it is bad!"
 
@@ -115,6 +127,7 @@ echo "当前工作目录 ： `pwd`"
 echo "当前文件父级目录: `dirname $0`"
 CUR_FILE_ABS_PATH=$(cd "$(dirname "$0")";pwd)
 # CUR_FILE_ABS_PATH=$(dirname $(readlink -f "$0"))  # mac os 有问题
+PS1="[`basename \`dirname \"$CUR_FILE_ABS_PATH\"\``] $0"
 
 echo $CUR_FILE_ABS_PATH
 # sh "$(pwd)/ip_get.sh" 172.16.10.57
@@ -230,6 +243,11 @@ EOF
 
 
 ## 13 > 判断文件和目录存在
+echo '
+### -z [-z string] “string”的长度为零则为真 
+### -o 或运算
+### -a 与运算
+### -n 判空操作 [-n string] or [string] “string”的长度为非零non-zero则为真 
 ### -x 判断是否存在并且具有可执行权限
 ### -d 判断目录
 ### -f 判断文件 
@@ -242,3 +260,4 @@ EOF
 #     mkdir my_file
 # fi
 # rm -rf my_file
+'

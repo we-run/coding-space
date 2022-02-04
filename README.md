@@ -1,7 +1,7 @@
 ### 码出优雅 享受开源 探索未知 快意人生
 
 
-**更方便**和**更快速**，历来是编程追求的最大目标，但是要实现它，我们却需要走一番曲折蜿蜒的心路历程，开阔眼界、锤炼技能和升华思维方式，是我个人总结的对包含技术在内的任何问题的得以有效解决的通用方法，没有问题不经过反复而能顺利解决的（当然，仅限于在某个时
+在保证**安全性**的前提下，**更方便**和**更快速**，历来是编程追求的最大目标，但是要实现它，我们却需要走一番曲折蜿蜒的心路历程，开阔眼界、锤炼技能和升华思维方式，是我个人总结的对包含技术在内的任何问题的得以有效解决的通用方法，没有问题不经过反复而能顺利解决的（当然，仅限于在某个时
 空限界的前提下这么说），既然是总结，那么关于`怎么总结`也是一个问题，当前项目就是这个问题的一个探索： 
 > - 通过横向和纵向(不是一个表格)地对比各个大小技术栈发展的历史、方向、主题，能对整体技术发展（不管是有序还是无序）有个全面、具象的把握，而不是仅仅靠几张脑图或者RoadMap；
 > - 通过汇聚不同的人的`idea`，剖切在各个技术栈的应用过程中产生的不理想、不满意、不通畅之处，进行总结，因为有些问题，需要放到一个更宏观（或者更微观）的参考系甚至完全不同的参考系中，会有更接近本质的解决方法；
@@ -27,7 +27,11 @@
 
 ├── algorithm-adt // 从算法到数据结构，属于人类思考的精华调查
 
+├── base-asmb // 汇编及下层 OS(4) 、Isa(3)、Mc(2) 、LG(1) 实践
+
 ├── base-c_cpp // c/c++ 语言及其相关生态特性试验 
+
+├── base-erlang // 科学的问题，用科学解决 - Erlang
 
 ├── base-golang // golang语言及其相关生态特性试验
 
@@ -95,9 +99,19 @@
 
 ├── lib-netty // 三方项目： netty 实践
 
-├── lib-zookeeper // 三方项目： zookeeper实践
-
 ├── media-img_audio_video // 媒体数据处理： 图片、音频、视频
+
+├── midware-dbproxy // 数据库代理 ： pgproxy 、
+
+├── midware-elastic_job // 关于 elasticjob-lite 和 elasticjob-cloud 的使用实践
+
+├── midware-flink // 中间件项目 ：  flink 项目实践
+
+├── midware-mq // 中间件项目 ：  RokcetMQ 、 Kafka 、RabbitMQ 、Pulsar 的对比和实践
+
+├── midware-zookeeper  // 中间件项目 ：  zookeeper实践
+
+├── midware-xxl_job
 
 ├── network-dn42 // 网络环境 - dn42使用
 
@@ -121,6 +135,8 @@
 
 ├── source-code-shared // 源码分享目录：
 
+├── storage-ceph // 分布式存储 - ceph
+
 ├── team-blog // 团队博客目录
 
 ├── web-css // web技术 ： css
@@ -129,7 +145,7 @@
 
 ├── web-react // web项目 ：基于react框架进行
 
-├── web-server-nginx
+├── web-server-nginx // nginx
 
 ├── web-server-node  // web服务器项目 ：基于node搭建
 
