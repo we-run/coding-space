@@ -89,7 +89,7 @@ echo "@符号，获取所有元素列表 : ${array_name[@]}"
 echo "数组长度： ${#array_name[@]}"
 echo "数组长度： ${#array_name[*]}"
 echo "单元素长度: ${#array_name[10]}"
-
+echo "数组索引列表 ${!array_name[@]}"
 
 ## 3> 循环使用方式
 echo '============ for loop ============'
