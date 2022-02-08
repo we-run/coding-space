@@ -2,13 +2,14 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
+
 # Site
 title: WE RUN
 subtitle: Coding Space
 description: 码出优雅 享受开源 </br> 探索未知 快意人生
 keywords: OpenSource Coding
 author: DerQiang
-language: en
+language: zh
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -105,7 +106,45 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-matery
+
+# https://github.com/theme-next/hexo-theme-next
+# https://github.com/blinkfox/hexo-theme-matery.git
+# https://github.com/blleng/hexo-theme-lx
+# https://github.com/ppoffice/hexo-theme-icarus
+## 为了 icarus 主题，特安装 # yarn add bulma-stylus@0.8.0 hexo-pagination@^2.0.0 hexo-renderer-inferno@^0.1.3 hexo-component-inferno@^1.0.2 inferno@^7.3.3 inferno-create-element@^7.3.3
+theme: next
+
+# algolia:
+#   appId: "RI20JA40F7"
+#   apiKey: "3e59612f21e8fa7bf7d5ab346f5abb4c"
+#   adminApiKey: "e57abf7d1892b46ec0e06388f9e77292"
+#   indexName: "blogs"
+#   chunkSize: 5000
+#   fields:
+#     - content:strip:truncate,0,500
+#     - excerpt:strip
+#     - gallery
+#     - permalink
+#     - photos
+#     - slug
+#     - tags
+#     - title
+
+leancloud_counter_security:
+  enable_sync: true
+  app_id: XRC9NjaTfw9nLCxYSqaC9yLs-gzGzoHsz
+  app_key: IWHIfOXsXbleJjWJ5xSGNJhn
+  username: daqiang@daqiang.me # Will be asked while deploying if is left blank
+  password: DFQqfd123 # Recommmended to be left blank. Will be asked while deploying if is left blank
+
+
+sitemap:
+  path: sitemap.xml
+  # template: ./sitemap_template.xml
+  rel: false
+  tags: true
+  categories: true
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

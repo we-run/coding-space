@@ -2,5 +2,5 @@
 
 .temp
 .cache
-
+/docs/.vuepress/theme
 **/dist/
