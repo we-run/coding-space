@@ -28,7 +28,7 @@ nginx_openssl_src="/usr/local/src"
 openssl_version="1.1.1k"
 jemalloc_version="5.2.1"
 
-ssl_update_file="/usr/bin/ssl_update.sh"
+ssl_update_file="/usr/bin/ssl_update_me.sh"
 
 source '/etc/os-release'
 
@@ -576,7 +576,7 @@ ssl_update_manuel() {
 
 acme_cron_update() {
     # wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/wulabing/V2Ray_ws-tls_bash_onekey/dev/ssl_update.sh"
-    cat > /usr/bin/ssl_update.sh <<EOF
+    cat > $ssl_update_file <<EOF
         #!/usr/bin/env bash
         PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
         export PATH
@@ -588,10 +588,10 @@ acme_cron_update() {
         sleep 1
         systemctl start nginx &> /dev/null
 EOF
-    echo "checking ssl_update.sh ..."
-    cat /usr/bin/ssl_update.sh
+    echo "checking ${ssl_update_file} ..."
+    cat $ssl_update_file
 
-    if [[ $(crontab -l | grep -c "ssl_update.sh") -lt 1 ]]; then
+    if [[ $(crontab -l | grep -c "ssl_update_me.sh") -lt 1 ]]; then
       if [[ "${ID}" == "centos" ]]; then
           #        sed -i "/acme.sh/c 0 3 * * 0 \"/root/.acme.sh\"/acme.sh --cron --home \"/root/.acme.sh\" \
           #        &> /dev/null" /var/spool/cron/root
