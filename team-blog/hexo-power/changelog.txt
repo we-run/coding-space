@@ -1,0 +1,9 @@
+
+yarn add bulma-stylus@0.8.0 hexo-pagination@^2.0.0 hexo-renderer-inferno@^0.1.3 hexo-component-inferno@^1.0.2 inferno@^7.3.3 inferno-create-element@^7.3.3
+# - yarn add hexo-renderer-ejs hexo-renderer-less - 不再使用 ejs，而是 nunjucks 模板引擎
+yarn add hexo-word-counter
+yarn add hexo-related-popular-posts
+yarn add hexo-component-inferno
+yarn add hexo-generator-searchdb
+yarn add hexo-leancloud-counter-security
+yarn add hexo-generator-sitemap
