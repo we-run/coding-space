@@ -7,25 +7,18 @@ date: 2020-01-05 13:10:15
 categories:
   - [DevOps, Kubernetes]
 ---
-
 {% asset_img banner-image banner.jpeg 550rem 370rem "k8s-image'banner'" %}
 ### 知识背景
 1. 对虚拟化的了解
   从2017年接触Docker，对虚拟化、容器化的了解，愈来愈广泛，原来所有的硬件设施的能力，均可以被虚拟化，包括：`NVF(Network Functions Virtualization)`、`SDN(Software Defined Network)`，到对操作系统以及运行操作系统的硬件能力进行虚拟化的技术，包括：`KVM架构(QEMU)`、`Xen架构`、`ESXi架构`
 2. 对虚拟化的管理
 <!-- more -->
-
-
 ### 环境准备
-
 1. 三台主机 
 192.168.0.101 head1.daqiang.me
 192.168.0.111 node1.daqiang.me
 192.168.0.112 node11.daqiang.me
-
 2. 主机配置
-
-
 - Common
   + 远程批量配置
     ```shell

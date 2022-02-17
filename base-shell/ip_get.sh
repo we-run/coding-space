@@ -9,9 +9,14 @@ echo `curl cip.cc/$1`
 
 echo "字符串 - 后缀操作"
 the_suffix="GENG WU"
-if [[ "${the_suffix##* }x" = "WU"x ]];then 
+echo "${the_suffix##* }"
+if [[ "${the_suffix##*}x" = "WU"x ]];then 
     echo 'do somting'
 fi
+
+
+# 解析域名 为ip地址
+dig @172.16.10.16 -p 53 napi.xinzhili.cn
 
 
 arr=(

@@ -15,3 +15,6 @@ function is_my_linux(){
         return 0
     fi 
 }
+
+
+
