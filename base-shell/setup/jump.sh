@@ -1,6 +1,12 @@
 #!/bin/sh
+# bash <(curl -s -S -L https://raw.githubusercontent.com/we-run/coding-space/master/base-shell/setup/jump.sh)
 
 read -rp "input your target host ip to connect : " host_ip
+if [[ ! -n "${host_ip}" ]];then
+    echo 'please input you IP address!'
+    exit 1
+fi
+
 mkdir -p $HOME/.ssh
 
 # sed -i '/#XZL_AUTO_START/{:begin;n;d;/#XZL_AUTO_END/!bbegin}' $HOME/.ssh/config
@@ -61,7 +67,6 @@ chmod 644 $HOME/.ssh/idc.pub
 sed -i "s/my_host/"$host_ip"/g" $HOME/.ssh/config
 
 
-
-
 echo '' >> $HOME/.ssh/config
 echo '#XZL_AUTO_END' >> $HOME/.ssh/config
+sed -i '/^$/d' $HOME/.ssh/config
