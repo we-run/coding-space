@@ -1,5 +1,6 @@
 #!/bin/sh
 
+read -rp "input your target host ip to connect : " host_ip
 mkdir -p $HOME/.ssh
 
 # sed -i '/#XZL_AUTO_START/{:begin;n;d;/#XZL_AUTO_END/!bbegin}' $HOME/.ssh/config
@@ -57,7 +58,7 @@ EOF
 chmod 600 $HOME/.ssh/idc
 chmod 644 $HOME/.ssh/idc.pub
 
-sed -i "s/my_host/"$1"/g" $HOME/.ssh/config
+sed -i "s/my_host/"$host_ip"/g" $HOME/.ssh/config
 
 
 
