@@ -322,3 +322,8 @@ fi
 ## 15. 通过 ${?:-?} 进行容错兜底操作
 echo ${HOSTS:-"aa"}
 echo ${HOST:-"aa"}
+
+
+## 16. 切分字符串成数组
+IFS=', ' read -r -a array <<< "$string"
+IFS=',' read -r -a params <<< "$l"

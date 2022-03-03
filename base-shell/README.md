@@ -8,8 +8,10 @@
 
 ### 从何而来
 1. 每天在用，但是不清不楚，誓要搞清楚这朵乌云
+2. 
 
 
 ### 目录说明
 1. 以Linux的常用shell命令区分目录；
 2. 其中`codes`目录下（git忽略,找作者索要），有下载其他三方的shell源码，进行参考学习
+3. 使用`curl -o- https://raw.githubusercontent.com/we-run/coding-space/master/base-shell/ip_get.sh | bash` 

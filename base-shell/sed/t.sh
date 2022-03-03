@@ -10,6 +10,30 @@
 ####### 3. 将执行结果输出
 
 ####### -n 选项需要用p动作进行输出，否则不会输出保持静默
+# :  # label
+# =  # line_number
+# a  # append_text_to_stdout_after_flush
+# b  # branch_unconditional             
+# c  # range_change                     
+# d  # pattern_delete_top/cycle          
+# D  # pattern_ltrunc(line+nl)_top/cycle 
+# g  # pattern=hold                      
+# G  # pattern+=nl+hold                  
+# h  # hold=pattern                      
+# H  # hold+=nl+pattern                  
+# i  # insert_text_to_stdout_now         
+# l  # pattern_list                       
+# n  # pattern_flush=nextline_continue   
+# N  # pattern+=nl+nextline              
+# p  # pattern_print                     
+# P  # pattern_first_line_print          
+# q  # flush_quit                        
+# r  # append_file_to_stdout_after_flush 
+# s  # substitute                                          
+# t  # branch_on_substitute              
+# w  # append_pattern_to_file_now         
+# x  # swap_pattern_and_hold             
+# y  # transform_chars 
 
 WORK_DIR=$(cd $(dirname $0);pwd)
 
@@ -142,6 +166,27 @@ EOF
 sed '/first/{ N ; s/\n/ / }' $WORK_DIR/data2.txt
 
 
-cat > data3.txt <<EOF
+cat > $WORK_DIR/data3.txt <<EOF
 On Tuesday, the Linux 
 EOF
+
+
+## 14> 多行替换
+cat > $WORK_DIR/data11.txt <<EOF
+有文本 test.txt
+123
+456kaishi33333
+ddd
+jieshu66666
+ddd
+444444
+EOF
+sed -e "{:begin;  /jieshu/! { $! { N; b begin }; }; s/kaishi.*jieshu/COMMENT/; };" $WORK_DIR/data11.txt
+# :begin，这是一个标号，man中叫做label，也就是跳转标记，供b和t命令用，本例中使用了b命令。
+# /jieshu/!是要替换内容的结束标记，带上!就是说当一行处理完毕之后，如果没有发现结束标记就继续，jieshu就是你要结束的搜索词
+# $!，$在正则中表示字符串结尾，在sed中代表文件的最后一行，本句和上一句结合起来的意思就是：如果在本行没有发现结束标记，并且当前扫描过的行并不是文件的最后一行。
+# N;，把下一行的内容追加（append）到缓冲区（pattern）之后，在我们的例子中，在处理456kaishi33333这一行的内容时，就会执行到这里，然后把下一行的内容ddd，依次类推把
+# jieshu66666一起放入缓冲区，相当于“合并”成了一行（sed的缓冲区中默认都只会包含一行的内容）。
+# b begin，由于仍然没有找到结束标记jieshu（注意上一条说的缓冲区还没有被处理），所以在这里跳回到标号begin，重新开始命令。如果开始和结束标记之间间隔了多行，那么就会有多次跳转发生。
+# s/kaishi.*jieshu/COMMENT/;，终于，/jieshu/!不再匹配成功，也就是我们已经找到了结束标记，那么用s命令来进行替换。如果开始和结束标记在一行的话，就会越过上面那些复杂的处理，直接执行到这里了
+

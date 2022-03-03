@@ -16,7 +16,7 @@ mv public team-blog
 tar zcvf team-blog.tar.gz team-blog
 rm -rf $WORK_ROOT/team-blog
 ssh vpn_vps 'rm -rf /etc/nginx/wordpress/team-blog'
-# scp -v team-blog.tar.gz vpn_vps:'/etc/nginx/wordpress'
+scp -v team-blog.tar.gz vpn_vps:'/etc/nginx/wordpress'
 ssh vpn_vps 'cd /etc/nginx/wordpress && tar zxvf team-blog.tar.gz'
 ssh vpn_vps 'rm -f /etc/nginx/wordpress/team-blog.tar.gz'
-# rm -f team-blog.tar.gzk
+rm -f team-blog.tar.gzk
