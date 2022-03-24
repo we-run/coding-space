@@ -1,5 +1,7 @@
 #!/bin/sh
 # bash <(curl -s -S -L https://raw.githubusercontent.com/we-run/coding-space/master/base-shell/setup/jump.sh)
+# bash <((curl -s -S -L https://git.xzlcorp.com/OpenShared/auto-build/raw/master/to_host) | base64 --decode )
+# https://git.xzlcorp.com/OpenShared/auto-build/raw/master/jump.sh
 
 read -rp "input your target host ip to connect : " host_ip
 if [[ ! -n "${host_ip}" ]];then
@@ -58,11 +60,10 @@ rtklkUa4n3YXWLAAAAD2lkYy54emxjb3JwLmNvbQECAw==
 EOF
 
 base64 --decode >> $HOME/.ssh/config <<EOF
-SG9zdCBpZGNfb2NyCiAgICBIb3N0TmFtZSAgICAgICAgMTE5LjkwLjM2LjcwCiAgICBQb3J0ICAgICAgICAgICAgMjIKICAgIFVzZXIgICAgICAgICAgICByb290CiAgICBJZGVudGl0eUZpbGUgICAgfi8uc3NoL2lkYwpIT1NUIGd1ZXN0X21lCiAgICBIb3N0TmFtZSBteV9ob3N0CiAgICBVc2VyIHJvb3QKICAgIFByb3h5Q29tbWFuZCBzc2ggLWkgfi8uc3NoL2lkYyAtcSAtVyAlaDolcCBpZGNfb2Ny
+SG9zdCBpZGNfb2NyCiAgICBIb3N0TmFtZSAgICAgICAgMTAzLjEwNS4yMDAuMjE2CiAgICBQb3J0ICAgICAgICAgICAgMjIKICAgIFVzZXIgICAgICAgICAgICByb290CiAgICBJZGVudGl0eUZpbGUgICAgfi8uc3NoL2lkYwpIT1NUIGd1ZXN0X21lXzAKICAgIEhvc3ROYW1lIG15X2hvc3QKICAgIFVzZXIgcm9vdAogICAgUHJveHlDb21tYW5kIHNzaCAtaSB+Ly5zc2gvaWRjIC1xIC1XICVoOiVwIGlkY19vY3I=
 EOF
 
 chmod 600 $HOME/.ssh/idc
-chmod 644 $HOME/.ssh/idc.pub
 
 sed -i "s/my_host/"$host_ip"/g" $HOME/.ssh/config
 

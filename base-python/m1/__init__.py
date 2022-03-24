@@ -1,6 +1,7 @@
 
 from mimetypes import init
 import random
+from manim import *
 
 
 # 验证自定义可调用类型
@@ -17,11 +18,21 @@ class BingoCage:
         return self.pick()
 
 
-def script_main():
-    bingo = BingoCage(range(3))
-    print(' - Caller Test bingo.pick() : {:3}'.format(bingo.pick()))
-    print(' - Caller Test bingo() : {:3}'.format(bingo()))
+class VectorArrow(Scene):
+    def construct(self):
+        dot = Dot(ORIGIN)
+        arrow = Arrow(ORIGIN, [2, 2, 0], buff=0)
+        numberplane = NumberPlane()
+        origin_text = Text('(0, 0)').next_to(dot, DOWN)
+        tip_text = Text('(2, 2)').next_to(arrow.get_end(), RIGHT)
+        self.add(numberplane, dot, arrow, origin_text, tip_text)
 
-    print(' 函数内省 >>> ')
-    
+
+
+def script_main():
+    # bingo = BingoCage(range(3))
+    # print(' - Caller Test bingo.pick() : {:3}'.format(bingo.pick()))
+    # print(' - Caller Test bingo() : {:3}'.format(bingo()))
+
+    # print(' 函数内省 >>> ')
     return __name__

@@ -78,6 +78,14 @@ if [[ "${the_suffix##* }x" = "WU"x ]];then
     echo 'do somting2'
 fi
 
+
+## 字符串替换
+tmp="My_name_is_daqiang 123"
+echo ${tmp/_/ /}
+echo ${tmp/23/bb} //abc1bb42341 #替换一次
+echo ${tmp//23/bb} //abc1bb4bb41 #双斜杠替换所有匹配
+echo ${tmp/#abc/bb} //bb12342341 #以什么开头来匹配，和php中的^有点像
+
 ## 2> 数组使用方式
 # 数组，bash支持一维数组，不支持多维
 array_name=(v0 v1 v2 v3)
