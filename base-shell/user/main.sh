@@ -15,5 +15,24 @@
 # usermod -s /bin/ksh -d /home/z –g developer sam
 # 此命令将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer。
 
+# 为该用户指定命令解释程序
+# usermod -s /bin/bash helloworld
+
+
+
+# 为该用户添加 sudo 权限
+# chmod u+w /etc/sudoers
+# vim /etc/sudoers
+# 找到这行 root ALL=(ALL) ALL 追加新行
+# helloworld ALL=(ALL:ALL) ALL
+# 撤销 sudoers 文件写权限
+# chmod u-w /etc/sudoers
+
+# 创建新用户会自动创建一个以用户名命名的新目录，需要为新目录添加读写权限
+# chown helloworld:helloworld -R /home/helloworld/
+
+
 # 如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限
 # newgrp root
+
+

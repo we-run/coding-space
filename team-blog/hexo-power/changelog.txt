@@ -7,3 +7,7 @@ yarn add hexo-component-inferno
 yarn add hexo-generator-searchdb
 yarn add hexo-leancloud-counter-security
 yarn add hexo-generator-sitemap
+
+yarn remove hexo-generator-sitemap
+# 改换下面的sitemmap生成器
+https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap

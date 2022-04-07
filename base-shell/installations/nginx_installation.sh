@@ -115,6 +115,12 @@ dependency_install() {
     #     ${INS} -y install build-essential
     # fi
     # judge "编译工具包 安装"
+    yum install centos-release-scl scl-utils-build -y
+    yum install devtoolset-10-toolchain -y
+    source /opt/rh/devtoolset-10/enable
+    judge '安装 '$(gcc --version)
+
+    echo "source /opt/rh/devtoolset-10/enable" >>/etc/profile
     
     if [[ "${ID}" == "centos" ]]; then
         ${INS} -y install pcre pcre-devel zlib-devel epel-release
@@ -144,11 +150,6 @@ dependency_install() {
     fi
     
     mkdir -p /usr/local/bin >/dev/null 2>&1
-
-    yum install centos-release-scl scl-utils-build -y
-    yum install devtoolset-10-toolchain -y
-    scl enable devtoolset-10 bash
-    echo "source /opt/rh/devtoolset-10/enable" >>/etc/profile
 }
 
 nginx_install() {
@@ -208,7 +209,7 @@ nginx_install() {
         --with-http_v2_module \
         --with-cc-opt='-O3' \
         --with-ld-opt="-ljemalloc" \
-        --with-openssl=../openssl-"$openssl_version"
+        --with-openssl=../openssl-"$openssl_version" \
         --add-dynamic-module=../headers-more-nginx-module
     judge "编译检查"
     make -j "${THREAD}" && make install
@@ -219,7 +220,7 @@ nginx_install() {
     sed -i 's/worker_processes  1;/worker_processes  3;/' ${nginx_dir}/conf/nginx.conf
     sed -i 's/    worker_connections  1024;/    worker_connections  4096;/' ${nginx_dir}/conf/nginx.conf
     sed -i '$i include conf.d/*.conf;' ${nginx_dir}/conf/nginx.conf
-    sed -i 'load_module /etc/nginx/modules/ngx_http_headers_more_filter_module.so; 1a' ${nginx_dir}/conf/nginx.conf
+    sed -i '1i \load_module '${nginx_dir}'/modules/ngx_http_headers_more_filter_module.so;' ${nginx_dir}/conf/nginx.conf
 
     # 删除临时文件
     rm -rf ../nginx-"${nginx_version}"
