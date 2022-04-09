@@ -1,0 +1,133 @@
+regions:
+  - region: bj-home-lab
+    description: 'my home lab function'
+    enable: false
+    nets:
+      - net: 192.168.0.0/24
+        description: 'NAS Network'
+        enable: false
+        nodes:
+          - host: 192.168.0.1
+            ie: init.sh
+            enable: false
+            hostname: a.homelab.daqiang.me
+          - host: 192.168.0.2
+            ie: init.sh
+            enable: false
+            hostname: b.homelab.daqiang.me
+          - host: 192.168.0.3
+            ie: init.sh
+            enable: false
+            hostname: c.homelab.daqiang.me
+      - net: 192.168.1.0/24
+        description: 'Media Network'
+        enable: false
+        nodes:
+          - host: 192.168.1.1
+            enable: false
+            ie: init.sh
+            hostname: d.homelab.daqiang.me
+          - host: 192.168.1.2
+            enable: false
+            ie: init.sh
+            hostname: e.homelab.daqiang.me
+          - host: 192.168.1.3
+            enable: false
+            ie: init.sh
+            hostname: f.homelab.daqiang.me
+      - net: 192.168.2.0/24
+        description: 'sense work'
+        enable: false
+        nodes:
+          - host: 192.168.2.1
+            enable: false
+            ie: init.sh
+            hostname: g.homelab.daqiang.me
+          - host: 192.168.2.2
+            enable: false
+            ie: init.sh
+            hostname: h.homelab.daqiang.me
+          - host: 192.168.2.3
+            enable: false
+            ie: init.sh
+            hostname: i.homelab.daqiang.me
+  - region: corp-work
+    description: 'my home lab function'
+    enable: false
+    nets:
+      - net: 172.16.10.0/24
+        description: 'Server Network'
+        enable: false
+        nodes:
+          - host: 172.16.10.1
+            enable: false
+            ie: init.sh
+            hostname: j.homelab.daqiang.me
+          - host: 172.16.10.2
+            enable: false
+            ie: init.sh
+            hostname: k.homelab.daqiang.me
+          - host: 172.16.10.3
+            enable: false
+            ie: init.sh
+            hostname: l.homelab.daqiang.me
+      - net: 172.16.11.0/24
+        description: 'Dev Network'
+        enable: false
+        nodes:
+          - host: 172.16.11.1
+            enable: false
+            ie: init.sh
+            hostname: m.homelab.daqiang.me
+          - host: 172.16.11.2
+            enable: false
+            ie: init.sh
+            hostname: n.homelab.daqiang.me
+          - host: 1172.16.11.3
+            enable: false
+            ie: init.sh
+            hostname: o.homelab.daqiang.me
+      - net: 172.16.12.0/24
+        description: 'Office Network'
+        enable: false
+        nodes:
+          - host: 172.16.12.120
+            enable: false
+            ie: init.sh
+            hostname: p.homelab.daqiang.me
+          - host: 172.16.12.121
+            enable: false
+            ie: init.sh
+            hostname: q.homelab.daqiang.me
+          - host: 172.16.12.122
+            enable: false
+            ie: init.sh
+            hostname: r.homelab.daqiang.me
+
+targets:
+  - target: naming-service
+    type: service
+    port_range: 8010,8011
+    intend_count: 2
+    env: 
+    param: 
+      - --spring.profiles.active=$1
+      - --spring.cloud.profile.active=$2
+  - name: scheduler-server
+    type: server
+    port_range: 7010,7011
+    intend_count: 1
+  - name: scheduler-server
+    type: server
+    port_range: 7010,7011
+    intend_count: 1
+
+groups:
+ - name: poc
+   mapping:
+    - location: a.homelab.daqiang.me
+      content: 
+    - location: b.homelab.daqiang.me
+      content: 
+    - location: c.homelab.daqiang.me
+      content:      

