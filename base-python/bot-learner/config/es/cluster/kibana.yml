@@ -1,0 +1,63 @@
+server.port: 5601
+server.host: $server.host
+# server.basePath: "/kib"
+#server.rewriteBasePath: false
+# server.publicBaseUrl: "http://me.derqiang.com/kib"
+#server.maxPayload: 1048576
+#server.name: "your-hostname"
+
+#server.ssl.enabled: false
+#server.ssl.certificate: /path/to/your/server.crt
+#server.ssl.key: /path/to/your/server.key
+
+elasticsearch.hosts: ["http://192.168.1.9:9201"]
+#elasticsearch.username: "kibana_system"
+#elasticsearch.password: "pass"
+# elasticsearch.serviceAccountToken: "my_token"
+#elasticsearch.pingTimeout: 1500
+#elasticsearch.requestTimeout: 30000
+#elasticsearch.requestHeadersWhitelist: [ authorization ]
+#elasticsearch.customHeaders: {}
+#elasticsearch.shardTimeout: 30000
+
+#elasticsearch.ssl.certificate: /path/to/your/client.crt
+#elasticsearch.ssl.key: /path/to/your/client.key
+#elasticsearch.ssl.certificateAuthorities: [ "/path/to/your/CA.pem" ]
+#elasticsearch.ssl.verificationMode: full
+
+#logging.root.level: debug
+#  type: file
+#  fileName: /var/logs/kibana.log
+#    type: json
+#  - name: elasticsearch.query
+#    level: debug
+#  - name: http.server.response
+#    level: debug
+#  - name: metrics.ops
+#    level: debug
+
+#path.data: data
+#pid.file: /run/kibana/kibana.pid
+#ops.interval: 5000
+# Supported languages are the following: English - en , by default , Chinese - zh-CN .
+#i18n.locale: "en"
+
+# migrations.batchSize: 1000
+# configuration option. Default: 100mb
+# migrations.maxBatchSizeBytes: 100mb
+# migrations.retryAttempts: 15
+# data.autocomplete.valueSuggestions.timeout: 1000
+# data.autocomplete.valueSuggestions.terminateAfter: 100000
+# elasticsearch.serviceAccountToken: AAEAAWVsYXN0aWMva2liYW5hL2Vucm9sbC1wcm9jZXNzLXRva2VuLTE2NDU2MTMzMDU2NTM6VzZ0TGJhSHRRSy00NGwzaWMyQVQzQQ
+# elasticsearch.ssl.certificateAuthorities: [/home/es/kibana-8.0.0/data/ca_1645613307043.crt]
+# xpack.fleet.outputs: [
+#   { 
+#     id: fleet-default-output, 
+#     name: default, 
+#     is_default: true, 
+#     is_default_monitoring: true, 
+#     type: elasticsearch, 
+#     hosts: ['https://172.16.10.131:9200'], 
+#     ca_trusted_fingerprint: 00f90d3259929dcafd7fb53bfe8ccb696d1b2a936fc8cd2270475ed49d6b4b12
+#   }
+# ]

@@ -111,6 +111,13 @@ for str in Ada Coffe Action Java; do
     echo " for loop - This is a skill (2): ${str}"
 done 
 
+for i in {2..254}
+do
+    echo '172.16.10.'$i
+    curl --location --max-time 1 --request GET 'http://172.16.10.'$i
+done
+
+
 int=1
 while(( $int<=5 ))
 do
@@ -239,7 +246,7 @@ wc -l < users
 # cmd << delimiter
 # doc
 # delimiter
-wc -l << EOF
+wc -l <<EOF
     我们都是为了一个目标而奋斗
     并没有彼此贫富之分
 EOF
@@ -258,7 +265,7 @@ echo '
 ### -n 判空操作 [-n string] or [string] “string”的长度为非零non-zero则为真 
 ### -x 判断是否存在并且具有可执行权限
 ### -d 判断目录
-### -f 判断文件 
+### -f 判断文件是否存在，可以正则
 ### -e 判断对象是否存在
 ### -s 判断对象存在，并且长度为0
 ### -nt 判断file1比file2新 与 -ot相反
@@ -268,8 +275,31 @@ echo '
 #     mkdir my_file
 # fi
 # rm -rf my_file
-'
 
+-eq 等于,如:if [ "$a" -eq "$b" ] 
+-ne 不等于,如:if [ "$a" -ne "$b" ] 
+-gt 大于,如:if [ "$a" -gt "$b" ] 
+-ge 大于等于,如:if [ "$a" -ge "$b" ] 
+-lt 小于,如:if [ "$a" -lt "$b" ] 
+-le 小于等于,如:if [ "$a" -le "$b" ] 
+<   小于(需要双括号),如:(("$a" < "$b")) 
+<=  小于等于(需要双括号),如:(("$a" <= "$b")) 
+>   大于(需要双括号),如:(("$a" > "$b")) 
+>=  大于等于(需要双括号),如:(("$a" >= "$b"))
+
+= 等于,如:if [ "$a" = "$b" ] 
+== 等于,如:if [ "$a" == "$b" ],与=等价 
+
+[[ $a == z* ]]   # 如果$a以"z"开头(模式匹配)那么将为true 
+[[ $a == "z*" ]] # 如果$a等于z*(字符匹配),那么结果为true 
+ 
+[ $a == z* ]     # File globbing 和word splitting将会发生 
+[ "$a" == "z*" ] # 如果$a等于z*(字符匹配),那么结果为true 
+'
+if [ 'x' == 'x'$1 ]; then
+    echo "Usage $0 search_dir"
+    exit 1
+fi
 
 
 ## 14 > 后缀判断

@@ -113,6 +113,8 @@ ignore:
 # https://github.com/ppoffice/hexo-theme-icarus
 ## 为了 icarus 主题，特安装 # yarn add bulma-stylus@0.8.0 hexo-pagination@^2.0.0 hexo-renderer-inferno@^0.1.3 hexo-component-inferno@^1.0.2 inferno@^7.3.3 inferno-create-element@^7.3.3
 theme: next
+# theme: even
+
 
 # algolia:
 #   appId: "RI20JA40F7"

@@ -1,5 +1,6 @@
 ---
 title: Kubernetes 安装与配置
+type: post
 tags:
   - k8s
   - mircoservice

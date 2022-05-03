@@ -39,3 +39,6 @@ out
 **/yarn.lock
 
 **/go.sum
+
+
+**/my_test

@@ -1,0 +1,24 @@
+cluster.name: $cluster.name
+node.name: $node.name
+node.attr.rack: $node.attr.rack
+#path.data: /path/to/data
+#path.logs: /path/to/logs
+#bootstrap.memory_lock: true
+network.host: $network.host
+http.port: $http.port
+discovery.seed_hosts: $discovery.seed_hosts
+# cluster.initial_master_nodes: $cluster.initial_master_nodes
+action.destructive_requires_name: true
+
+# xpack.security.enabled: $xpack.security.enabled
+# xpack.security.enrollment.enabled: $xpack.security.enrollment.enabled
+# xpack.security.http.ssl:
+#   enabled: $xpack.security.http.ssl.enabled
+# keystore.path: certs/http.p12
+#   keystore.path: certs/transport.p12
+# xpack.security.transport.ssl:
+#   enabled: $xpack.security.transport.ssl.enabled
+# verification_mode: certificate
+# truststore.path: certs/transport.p12
+# http.host: [_local_, _site_]
+# transport.host: [_local_, _site_]

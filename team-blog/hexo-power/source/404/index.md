@@ -1,10 +1,30 @@
 ---
 title: 404
-tags:
-  - page_tag
+type: 404
 date: 2022-02-07 17:03:29
 comments: false
 ---
-<script src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js"
-        charset="utf-8" homePageUrl="/" homePageName="Back to home">
-</script>
+
+
+      \          SORRY            /
+        \                         /
+        \    This page does     /
+          ]   not exist yet.    [    ,'|
+          ]                     [   /  |
+          ]___               ___[ ,'   |
+          ]  ]\             /[  [ |:   |
+          ]  ] \           / [  [ |:   |
+          ]  ]  ]         [  [  [ |:   |
+          ]  ]  ]__     __[  [  [ |:   |
+          ]  ]  ] ]\ _ /[ [  [  [ |:   |
+          ]  ]  ] ] (#) [ [  [  [ :===='
+          ]  ]  ]_].nHn.[_[  [  [
+          ]  ]  ]  HHHHH. [  [  [
+          ]  ] /   `HH("N  \ [  [
+          ]__]/     HHH  "  \[__[
+          ]         NNN         [
+          ]         N/"         [
+          ]         N H         [
+        /          N            \
+        /           q,            \
+      /                           \

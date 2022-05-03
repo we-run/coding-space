@@ -30,9 +30,8 @@ class VectorArrow(Scene):
 
 
 def script_main():
-    # bingo = BingoCage(range(3))
-    # print(' - Caller Test bingo.pick() : {:3}'.format(bingo.pick()))
-    # print(' - Caller Test bingo() : {:3}'.format(bingo()))
-
-    # print(' 函数内省 >>> ')
+    bingo = BingoCage(range(3))
+    print(' - Caller Test bingo.pick() : {:3}'.format(bingo.pick()))
+    print(' - Caller Test bingo() : {:3}'.format(bingo()))
+    print(' 函数内省 >>> ')
     return __name__

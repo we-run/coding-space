@@ -76,7 +76,7 @@ deploy() {
 
 retryCheck() {
 	counter=0
-	while(( $counter < 15 ))
+	while(( $counter < 30 ))
 	do
 		let "counter++"
 		r=`curl -s --location --max-time 2 --request GET $1`
@@ -84,9 +84,9 @@ retryCheck() {
 		if [[ -n $r ]];then
 			break
 		fi
-		sleep 3
+		sleep 10
 	done
-	if [ $counter -lt 15 ];then
+	if [ $counter -lt 30 ];then
 		echo 'deploy suc for '$1' of '$2
 	else
 		echo 'deploy fail for '$1' of '$2

@@ -35,4 +35,25 @@
 # 如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限
 # newgrp root
 
+#create group if not exists
+ES_GROUP="es_group"
+ES_USER="es"
+egrep "^$group" /etc/group >& /dev/null
+if [ $? -ne 0 ]
+then
+    groupadd $group
+fi
 
+#create user if not exists
+egrep "^$user" /etc/passwd >& /dev/null
+if [ $? -ne 0 ]
+then
+    useradd -g $group $user
+fi
+
+#create user if not exists
+id $user >& /dev/null
+if [ $? -ne 0 ]
+then
+   useradd -g $group $user
+fi

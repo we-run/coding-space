@@ -17,10 +17,10 @@ def run():
 
 w = threading.Thread(target=run)
 
-p.stdin.write("echo H_W!\r\n".encode("utf-8"))
+p.stdin.write("echo 我们!\r\n".encode("utf-8"))
 p.stdin.flush()
 time.sleep(1)
-p.stdin.write("exit".encode("utf-8"))
+p.stdin.write("exit\n".encode("utf-8"))
 p.stdin.flush()
 
 w.start()

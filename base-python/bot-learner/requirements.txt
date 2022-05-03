@@ -1,0 +1,5 @@
+fabric2==2.6.0
+requests==2.27.1
+paramiko~=2.10.4
+invoke~=1.7.0
+pathlib2~=2.3.7.post1
