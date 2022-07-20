@@ -1,15 +1,35 @@
 
+### VPS资源
+(DMIT)[https://vpsxueyuan.com/dmit-vps-tutorial/]
+(CN2 GIA VPS)[https://vpsxueyuan.com/cn2-gia-vps-merchants/]
+(VPN兼顾建站需求 VPS商家)[https://vpsxueyuan.com/vps-for-host-site/]
+(大带宽大流量VPS商家汇总)[https://netfiles.pw/large-bandwith-traffic-vps-summary/]
+### Trojan
+- 资源
+    (原版C++ trojan)[https://github.com/trojan-gfw/trojan]
+    (支持CDN的trojan-go)[https://github.com/p4gefau1t/trojan-go]
+    (Trojan基本原理)[https://p4gefau1t.github.io/trojan-go/basic/trojan/]
 
+### XRay
+(XRay 源码)[https://github.com/XTLS]
+安装：
+```sh
+bash <(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh) install
+```
+
+### ClashX Pro 
+Github ： https://github.com/Dreamacro/clash/releases 
+其发布地址 ： https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public
 
 ### 解锁流媒体服务
-
 - 为什么不能正常看？
 1. 完全无法看， 一个IP，很多账号登陆，会被封锁；
 2. 部分解锁？
 3. 百分百解锁
 4. 检测是否可以看的脚本： https://github.com/Netflixxp/NF
 
-
+### 集成环境
+(xrayr-project)[https://crackair.gitbook.io/xrayr-project/xrayr-pei-zhi-wen-jian-shuo-ming/config]
 
 - 资料：
 1. 视频：https://www.youtube.com/watch?v=Z5kHGt8giVY ， 博客： https://ybfl.xyz/106.html

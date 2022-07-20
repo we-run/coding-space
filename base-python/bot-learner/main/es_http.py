@@ -1,5 +1,4 @@
 
-
 # 0. 读取 指定的目录
 # 1. 加载 json请求体 <= 
 # 2. 构造 url
@@ -9,10 +8,8 @@
 
 import json
 import os
-
-from pathlib import Path
 import re
-import utils as my_utils
+
 
 class LearnerCatalog(object):
     def __init__(self) -> None:
@@ -41,7 +38,16 @@ class LearnerCatalog(object):
         self._active_dir = self._config_base + "/es/search"
         return self
 
-    def load(self, file_name: str = None):
+    def resource(self, target='v2ray'):
+        self._active_dir = self._root + "/resource"
+        return self
+
+    def dist(self, target='v2ray-linux-64.tar.gz'):
+        if target.startswith('dist/'):
+            target = target.replace('dist/', '', 1)
+        return self._root + "/dist/" + target
+
+    def load_json(self, file_name: str = None):
         if '.' in file_name:
             file_name = file_name.replace('.', '\.')
         for root, dirs, files in os.walk(self._active_dir):
@@ -50,6 +56,7 @@ class LearnerCatalog(object):
                     print(root + '/' + file)
                     with open(root + '/' + file) as f:
                         return json.load(f)
+
 
 class ESRequestBuilder(object):
 
@@ -80,8 +87,6 @@ class ESRequestBuilder(object):
 
 # ESRequestBuilder(LearnerCatalog()).auth().
 
-print(ESRequestBuilder.HEADER())
+# print(ESRequestBuilder.HEADER())
 
-print(LearnerCatalog().index().load('create_english_a'))
-
-
+# print(LearnerCatalog().index().load_json('create_english_a'))

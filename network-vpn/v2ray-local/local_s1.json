@@ -1,0 +1,34 @@
+{
+    "log": {
+        "access": "./access.log",
+        "error": "./error.log",
+        "loglevel": "debug"
+    },
+    "inbounds": [
+        {
+            "port": 21261,
+            "listen": "127.0.0.1",
+            "tag": "local-test",
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "172.16.10.126",
+                "port": 8088,
+                "timeout": 0,
+                "followRedirect": false,
+                "userLevel": 0
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {},
+            "tag": "blocked"
+        }
+    ]
+}

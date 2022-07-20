@@ -2,7 +2,7 @@
 
 # echo "current host public ip address : "`curl -L ip.tool.lu`
 
-echo `curl -s cip.cc/$1`
+echo `curl cip.cc/$1`
 
 
 # echo "字符串 - 后缀操作"

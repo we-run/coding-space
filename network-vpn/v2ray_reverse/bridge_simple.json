@@ -1,0 +1,99 @@
+{
+    "log": {
+        "access": "./access.log",
+        "error": "./error.log",
+        "loglevel": "debug"
+    },
+    "reverse": {
+        "bridges": [
+            {
+                "tag": "bridge_dev129",
+                "domain": "git_ssh.xzlcorp.dev"
+            },
+            {
+                "tag": "brdige_dev126_https",
+                "domain": "https_web_site.xzlcorp.dev"
+            },
+            {
+                "tag": "brdige_dev126_http",
+                "domain": "http_web_site.xzlcorp.dev"
+            }
+        ]
+    },
+    "outbounds": [
+        {
+            "tag": "out_dev129_ssh",
+            "protocol": "freedom",
+            "settings": {
+                "redirect": "127.0.0.1:22"
+            }
+        },
+        {
+            "tag": "out_dev126_https",
+            "protocol": "freedom",
+            "settings": {
+                "redirect": "172.16.10.126:443"
+            }
+        },
+        {
+            "tag": "out_dev126_http",
+            "protocol": "freedom",
+            "settings": {
+                "redirect": "172.16.10.126:8088"
+            }
+        },
+        {
+            "tag": "tunnel",
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "39.105.41.63",
+                        "port": 4000,
+                        "users": [
+                            {
+                                "id": "e27d425f-8106-4ad3-8c77-8a56a1e055b4"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "inboundTag": [
+                    "bridge_dev129",
+                    "brdige_dev126_https",
+                    "brdige_dev126_http"
+                ],
+                "outboundTag": "tunnel"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "brdige_dev126_http"
+                ],
+                "port": 80,
+                "outboundTag": "out_dev126_http"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "brdige_dev126_https"
+                ],
+                "port": 443,
+                "outboundTag": "out_dev126_https"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "bridge_dev129"
+                ],
+                "outboundTag": "out_dev129_ssh"
+            }
+        ]
+    }
+}

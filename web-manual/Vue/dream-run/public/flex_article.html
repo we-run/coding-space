@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style type="text/css">
+
+    * {
+        outline: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    body, .container, .section, .nav, .footer {
+        display: flex;
+    }
+
+    body, .section {
+        flex-direction: column;
+    }
+
+    .nav {
+        align-items: center;
+    }
+    
+    a {
+        display: block;
+    }
+
+    .container, .footer {
+        justify-content: space-around;
+    }
+</style>
+
+<body>
+
+    <div class="header">
+        <h2>这里是文章标题</h2>
+    </div>
+
+    <div class="nav">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/careers">Careers</a>
+        <a href="/contacts">Contacts</a>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <p class="article">
+                第一篇文章第一段
+            </p>
+            <p class="article">
+                第一篇文章第二段
+            </p>
+            <p class="article">
+                第一篇文章第三段
+            </p>
+        </div>
+        <div class="section">
+            <p class="article">
+                第二篇文章第一段
+            </p>
+            <p class="article">
+                第二篇文章第二段
+            </p>
+            <p class="article">
+                第二篇文章第三段
+            </p>
+        </div>
+        <div class="section">
+            <p class="article">
+                第三篇文章第一段
+            </p>
+            <p class="article">
+                第三篇文章第二段
+            </p>
+            <p class="article">
+                第三篇文章第三段
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        copyright @ 2012
+    </div>
+
+</body>
+
+</html>

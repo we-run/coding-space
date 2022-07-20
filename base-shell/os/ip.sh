@@ -52,3 +52,26 @@ fi
 # [[ "$num" =~ ^[1-9]+$ ]] && echo OK || echo Wrong
 
 
+
+get_ip(){
+    local IP=$( ip addr | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | egrep -v "^192\.168|^172\.1[6-9]\.|^172\.2[0-9]\.|^172\.3[0-2]\.|^10\.|^127\.|^255\.|^0\." | head -n 1 )
+    [ -z ${IP} ] && IP=$( wget -qO- -t1 -T2 ipv4.icanhazip.com )
+    [ -z ${IP} ] && IP=$( wget -qO- -t1 -T2 ipinfo.io/ip )
+    echo ${IP}
+}
+
+check_ip(){
+    local checkip=$1   
+    local valid_check=$(echo $checkip|awk -F. '$1<=255&&$2<=255&&$3<=255&&$4<=255{print "yes"}')   
+    if echo $checkip|grep -E "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$" >/dev/null; then   
+        if [ ${valid_check:-no} == "yes" ]; then   
+            return 0   
+        else   
+            echo -e "[${red}Error${plain}] IP $checkip not available!"   
+            return 1   
+        fi   
+    else   
+        echo -e "[${red}Error${plain}] IP format error!"   
+        return 1   
+    fi
+}

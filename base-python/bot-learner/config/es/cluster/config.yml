@@ -7,7 +7,7 @@ node.attr.rack: $node.attr.rack
 network.host: $network.host
 http.port: $http.port
 discovery.seed_hosts: $discovery.seed_hosts
-# cluster.initial_master_nodes: $cluster.initial_master_nodes
+#cluster.initial_master_nodes: $cluster.initial_master_nodes
 action.destructive_requires_name: true
 
 # xpack.security.enabled: $xpack.security.enabled

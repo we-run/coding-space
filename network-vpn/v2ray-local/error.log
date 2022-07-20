@@ -1,0 +1,25 @@
+2022/07/02 11:42:00 [Debug] app/log: Logger started
+2022/07/02 11:42:00 [Info] app/dns: DNS: created Local DOH client for https://1.1.1.1/dns-query
+2022/07/02 11:42:00 [Info] app/dns: DNS: created UDP client initialized for 1.1.1.1:53
+2022/07/02 11:42:00 [Info] app/dns: DNS: created UDP client initialized for 1.0.0.1:53
+2022/07/02 11:42:00 [Info] app/dns: DNS: created UDP client initialized for 8.8.8.8:53
+2022/07/02 11:42:00 [Info] app/dns: DNS: created UDP client initialized for 8.8.4.4:53
+2022/07/02 11:42:00 [Info] app/dns: DNS: created localhost client
+2022/07/02 11:42:00 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:21261
+2022/07/02 11:42:00 [Info] transport/internet/websocket: listening TCP(for WS) on 127.0.0.1:21261
+2022/07/02 11:42:00 [Warning] V2Ray 5.0.7 started
+2022/07/02 11:43:15 [Debug] app/log: Logger closing
+2022/07/02 11:43:16 [Debug] app/log: Logger started
+2022/07/02 11:43:16 [Info] app/dns: DNS: created Local DOH client for https://1.1.1.1/dns-query
+2022/07/02 11:43:16 [Info] app/dns: DNS: created UDP client initialized for 1.1.1.1:53
+2022/07/02 11:43:16 [Info] app/dns: DNS: created UDP client initialized for 1.0.0.1:53
+2022/07/02 11:43:16 [Info] app/dns: DNS: created UDP client initialized for 8.8.8.8:53
+2022/07/02 11:43:16 [Info] app/dns: DNS: created UDP client initialized for 8.8.4.4:53
+2022/07/02 11:43:16 [Info] app/dns: DNS: created localhost client
+2022/07/02 11:43:16 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:21261
+2022/07/02 11:43:16 [Warning] V2Ray 5.0.7 started
+2022/07/02 17:46:34 [Debug] app/log: Logger started
+2022/07/02 17:46:34 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:21261
+2022/07/02 17:46:34 [Info] transport/internet/tcp: listening TCP on 127.0.0.1:21261
+2022/07/02 17:46:34 [Warning] V2Ray 5.0.7 started
+2022/07/02 17:46:36 [Debug] app/log: Logger closing

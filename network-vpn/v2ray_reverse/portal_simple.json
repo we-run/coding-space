@@ -1,0 +1,123 @@
+{
+    "log": {
+        "access": "./access.log",
+        "error": "./error.log",
+        "loglevel": "debug"
+    },
+    "reverse": {
+        "portals": [
+            {
+                "tag": "portal_to_dev129",
+                "domain": "git_ssh.xzlcorp.dev"
+            },
+            {
+                "tag": "portal_to_dev126_http",
+                "domain": "http_web_site.xzlcorp.dev"
+            },
+            {
+                "tag": "portal_to_dev126_https",
+                "domain": "https_web_site.xzlcorp.dev"
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "tag": "external_git_ssh",
+            "port": 22,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1",
+                "port": 22,
+                "network": "tcp"
+            }
+        },
+        {
+            "tag": "external_https_site",
+            "port": 443,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1",
+                "port": 443,
+                "network": "tcp"
+            }
+        },
+        {
+            "tag": "external_http_site",
+            "port": 80,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1",
+                "port": 80,
+                "network": "tcp"
+            }
+        },
+        {
+            "tag": "portal_tunnel",
+            "port": 4000,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "e27d425f-8106-4ad3-8c77-8a56a1e055b4"
+                    }
+                ]
+            }
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "inboundTag": [
+                    "portal_tunnel"
+                ],
+                "domains": [
+                    "full:git_ssh.xzlcorp.dev"
+                ],
+                "outboundTag": "portal_to_dev129"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "portal_tunnel"
+                ],
+                "domains": [
+                    "full:http_web_site.xzlcorp.dev"
+                ],
+                "outboundTag": "portal_to_dev126_http"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "portal_tunnel"
+                ],
+                "domains": [
+                    "full:https_web_site.xzlcorp.dev"
+                ],
+                "outboundTag": "portal_to_dev126_https"
+            },
+            
+            {
+                "type": "field",
+                "inboundTag": [
+                    "external_git_ssh"
+                ],
+                "outboundTag": "portal_to_dev129"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "external_https_site"
+                ],
+                "outboundTag": "portal_to_dev126_https"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "external_http_site"
+                ],
+                "outboundTag": "portal_to_dev126_http"
+            }
+        ]
+    }
+}

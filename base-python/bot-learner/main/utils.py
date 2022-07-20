@@ -1,4 +1,3 @@
-
 from copy import copy
 from enum import Enum, auto
 from mimetypes import init
@@ -10,11 +9,37 @@ import re
 from paramiko import RSAKey
 from fabric2 import Connection, Config
 from pathlib import Path
-
+from main.es_http import LearnerCatalog
 
 class TodoAction(object):
     def __init__(self, action: dict) -> None:
         pass
+
+
+def get_mac_address():
+    '''
+    @summary: return the MAC address of the computer
+    '''
+    import sys
+    import os
+    mac = None
+    if sys.platform == "win32":
+        for line in os.popen("ipconfig /all"):
+            print(line)
+            if line.lstrip().startswith("Physical Address"):
+                mac = line.split(":")[1].strip().replace("-", ":")
+                break
+    else:
+        print('>lux')
+        for line in os.popen("/sbin/ifconfig"):
+            # print(line)
+            r = re.search(r'((([a-f\d]{2}:){5})|(([a-f\d]{2}-){5}))[a-f\d]{2}', line, re.IGNORECASE)
+            if r is not None:
+                print(r.group(0))
+            if 'Ether' in line:
+                mac = line.split()[4]
+                break
+    return mac
 
 
 def create_conn_chain(chain) -> Connection:
@@ -58,27 +83,35 @@ def __create_conn(chain, source: Connection):
     if chain_u.get('pwd') is not None:
         BLUE_LOG(
             'PREPARE', "Auth Mode - Login with passwords and its value is : {}".format(chain_u['pwd']))
-        return __create_conn(chain[1:], Connection(user=u, host=ip, port=port, gateway=source, inline_ssh_env=True, connect_kwargs={
-            'password': chain_u['pwd'],
-            # 'allow_agent': False
-        }))
+        return __create_conn(chain[1:], Connection(user=u, host=ip, port=port, gateway=source, inline_ssh_env=True,
+                                                   connect_kwargs={
+                                                       'password': chain_u['pwd'],
+                                                       # 'allow_agent': False
+                                                   }))
     else:
         BLUE_LOG('PREPARE', "Auth Mode - Private key and its path is : {}".format(
             GET_CONF_FILE_PATH(chain_u.get('pkey'))))
-        return __create_conn(chain[1:], Connection(user=u, host=ip, port=port, gateway=source, inline_ssh_env=True, connect_kwargs={
-            'pkey': RSAKey.from_private_key_file(GET_CONF_FILE_PATH(chain_u.get('pkey')))
-        }))
+        return __create_conn(chain[1:], Connection(user=u, host=ip, port=port, gateway=source, inline_ssh_env=True,
+                                                   connect_kwargs={
+                                                       'pkey': RSAKey.from_private_key_file(
+                                                           GET_CONF_FILE_PATH(chain_u.get('pkey')))
+                                                   }))
 
 
 # get abs config file path
 
 def GET_CONF_FILE_PATH(rp: str):
-    return Path('./config', rp).resolve()
+    if rp.startswith('resource'):
+        return LearnerCatalog().resource(rp)
+    if rp.startswith('dist'):
+        return LearnerCatalog().dist(rp)
+    return Path(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), './config', rp).resolve().as_posix()
 
 
 def SET_ENV_FOR_SHELL(env, content):
     for k, v in env.items():
         content = content.replace('$' + k, v)
+
 
 def deploy_key(key, server, username, password):
     client = paramiko.SSHClient()
@@ -97,6 +130,7 @@ def auto_dep():
     hosts = ["hostname1", "hostname2", "hostname3"]
     for host in hosts:
         deploy_key(key, host, username, password)
+
 
 # CUSTOME LOGGING OUTPUT
 
@@ -123,7 +157,7 @@ def BLUE_LOG(t, o):
 def __LOG(color: LOG_COLOR, title, output):
     pre = '--------------------------'
     bottom = copy(pre)
-    pre = pre[0:len(pre)-(int)(len(title)/2)]
+    pre = pre[0:len(pre) - (int)(len(title) / 2)]
     upper = '{}{}{}'.format(pre, title, pre)
     print(upper)
     if color == LOG_COLOR.RED:

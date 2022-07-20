@@ -71,11 +71,11 @@ cert_install() {
     port_exist_check "${port}"
     
     # nginx_exist_check
-    nginx_conf_add
+    # nginx_conf_add
     web_camouflage
 
     ssl_judge_and_install
-    # nginx_systemd
+    nginx_systemd
     
     tls_type
     # start_process_systemd

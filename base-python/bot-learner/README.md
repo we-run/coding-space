@@ -2,6 +2,11 @@
 
 # 本工具以 python 3.x 作为运行基础环境
 
+## 个中缘由
+在学习ES的过程中（也不完全是因ES学习，而是因ES而更加觉得），发现很多笔记都仅仅是笔记，虽然当时觉得明白了，也记下了，但是日久之后，再次复习，就
+会觉得干瘪乏味，觉得是不是可以将笔记转化成一行行的"执行过程（代码）" + "注释"，按照时间线、任务线、主次层次，进行记录，又可以纳入版本管理，最重
+要的是**能够和笔记进行交互的过程，让人不得不结构化自己的思路，且加深印象，增加趣味**
+
 ## 安装依赖项
 - 项目管理参考
   + [Installing packages](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
@@ -11,6 +16,11 @@ $ python3 -m venv ./env
 $ pip install -r requirements.txt
 $ pip show fabric2 
 $ pip list
+
+# 高版本的此依赖项，会有警告过期输出，所以降级安装
+$  pip install cryptography==36.0.2
+
+# PACKAGE_AS_FABRIC2=yes pip install -e .
 ```
 
 ## 基本功能说明

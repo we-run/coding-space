@@ -6,14 +6,17 @@
 # WORK_DIR="$(cd -- "$(dirname "$2")" >/dev/null 2>&1 ; pwd -P )"
 judge() {
     if [[ 0 -eq $? ]]; then
+        # shellcheck disable=SC2154
         echo -e "${OK} ${GreenBG} $1 完成 ${Font}"
         sleep 1
     else
+        # shellcheck disable=SC2154
         echo -e "${Error} ${RedBG} $1 失败${Font}"
         exit 1
     fi
 }
 
+# shellcheck disable=SC2164
 cd $HOME
 WORK_DIR=$HOME
 # ES_VER=$1
@@ -35,10 +38,10 @@ if [ -z $TO_ES_HOME ]; then
     tar -zxf elasticsearch-"$ES_VER".tar.gz
     # curl --progress-bar -o ./elasticsearch-"$ES_VER".tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-"$ES_VER"-linux-x86_64.tar.gz && tar -zxf elasticsearch-"$ES_VER".tar.gz
 else
-    echo '0 > elasticsearch-'$ES_VER' had exsited.'
+    echo '0 > elasticsearch-'$ES_VER' had existed.'
 fi
 TO_ES_HOME=$(find $WORK_DIR -maxdepth 2 -type d -name 'elasticsearch-'$ES_VER)
-echo '>>'$TO_ES_HOME
+echo ">>$TO_ES_HOME"
 # >> 0.3 set up es running env
 
 # >>> Heap size settings
@@ -70,19 +73,19 @@ if [[ -n $TO_KILL ]];then
     kill -9 $TO_KILL
 fi
 
-# > 2. modify elasticserach config file
+# > 2. modify elasticsearch config file
 # "cluster.name:der-es;node.name:node-1;node.attr.rack:rack-1;node.attr.size:big;path.data:$TO_ES_HOME/data1;network.host:"
 
 
-# > 3. find taget elasticsearch version and execute it
+# > 3. find target elasticsearch version and execute it
 echo 'Launch the es server of verion : '$ES_VER
 TO_KILL_KIB=$(ps aux | awk '$NF ~ /kibana/ {print $2}')
 if [[ -n $TO_KILL_KIB ]];then
     echo "Kill old kibana ... "$TO_KILL
     kill -9 $TO_KILL
 fi
-nohup $TO_KIB_HOME/bin/kibana &
 
+nohup $TO_KIB_HOME/bin/kibana &
 $TO_ES_HOME/bin/elasticsearch -d
 
 # > 4. clear once config

@@ -1,0 +1,88 @@
+{
+    "log": {
+        "error": "",
+        "loglevel": "info",
+        "access": ""
+    },
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "protocol": "dokodemo-door",
+            "port": "7008",
+            "settings": {
+                "address": "log.dongfuqiang.com",
+                "port": 443,
+                "network": "tcp",
+                "timeout": 300,
+                "followRedirect": false,
+                "userLevel": 0
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "mux": {
+                "enabled": false,
+                "concurrency": 8
+            },
+            "protocol": "vmess",
+            "streamSettings": {
+                "wsSettings": {
+                    "path": "/0e029/",
+                    "headers": {
+                        "host": "log.dongfuqiang.com"
+                    }
+                },
+                "tlsSettings": {
+                    "serverName": "log.dongfuqiang.com",
+                    "allowInsecure": true
+                },
+                "security": "tls",
+                "network": "ws"
+            },
+            "tag": "proxy",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "log.dongfuqiang.com",
+                        "users": [
+                            {
+                                "id": "4f7fa7c7-b79c-4323-b883-d0e5691897ba",
+                                "alterId": 8,
+                                "level": 0,
+                                "security": "aes-128-gcm"
+                            }
+                        ],
+                        "port": 443
+                    }
+                ]
+            }
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIP",
+                "redirect": "",
+                "userLevel": 0
+            }
+        },
+        {
+            "tag": "block",
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "none"
+                }
+            }
+        }
+    ],
+    "dns": {},
+    "routing": {
+        "settings": {
+            "domainStrategy": "AsIs",
+            "rules": []
+        }
+    },
+    "transport": {}
+}
