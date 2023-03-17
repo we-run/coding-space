@@ -129,6 +129,7 @@ def __run_todo(steps):
                 r = re.search(r'(\S+)', '{}'.format(r.tail('stdout', count=1)))
                 ssh_dir = r.group(0) + '/.ssh'
                 judge_shell = 'if [[ -f {}/{} ]];then echo 1; else echo 0; fi'.format(ssh_dir, os.path.basename(pkey))
+                print(' >>>--->> ' + judge_shell)
                 if '1' not in conn.run(judge_shell, ).tail('stdout', count=1):
                     print('>>> COPY LOCAL KEY FILES TO REMOTE HOME ... ')
                     conn.run('mkdir -p ' + ssh_dir)

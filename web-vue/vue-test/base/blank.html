@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>blank page</title>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+        <style rel="stylesheet">
+        </style>
+        <script type="application/javascript">
+            // window.onload = function () {
+            //     this.app = new Vue({
+            //         el: '#app'
+            //     })
+            // }
+        </script>
+    </head>
+    
+    <body>
+        <div id="app">
+            <ul id="ul">
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        </div>
+    </body>
+    <script type="application/javascript">
+        //冒泡阶段
+        window.addEventListener('click', (e) => {
+            e.preventDefault()
+        })//默认这里第三个参数是false
+        // 捕获阶段,在历史界面上，添加一个属性，banner = true, 不再响应原理的函数，提示alter 解决方法：在最顶层绑定一个捕获事件，去拦截冒泡，
+        window.addEventListener('click', (e) => {
+            // if (banned) {
+                // e.stopPropagation()//阻止捕获
+            // }
+        }, true)
+
+        const ul = document.querySelector('ul')
+        ul.addEventListener('click', function (e) {
+            // console.log(e)
+            const target = e.target
+            if (target.tagName.toLowerCase() === 'li') {
+                const liList = this.querySelectorAll('li')
+                const index = Array.prototype.indexOf.call(liList, target)
+                alert(`内容是${target.innerHTML},索引${index}`)
+            }
+        })
+
+    </script>
+
+</html>

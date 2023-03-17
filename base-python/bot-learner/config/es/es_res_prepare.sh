@@ -8,7 +8,7 @@ RF="$HOME/elasticsearch-$ES_VER.tar.gz"
 echo $RF
 if [[ ! -f "$RF" ]]; then
     echo 'ES SCHEL 3 : copy es file ... '$ES_VER
-    scp -i $P_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@192.168.1.254:'~/elasticsearch-'$ES_VER'.tar.gz' .
+    scp -i $P_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null dongfuqiang@192.168.87.1:'~/elasticsearch-'$ES_VER'.tar.gz' .
     tar -zxf elasticsearch-"$ES_VER".tar.gz
 else
     echo 'Existed The es tar file.'$ES_VER
@@ -18,7 +18,7 @@ KF="$HOME/kibana-$KIB_VER.tar.gz"
 if [ ! -f "$KF" ] && [ $KIB_VER ]; then
     echo 'ES SCHEL 3 : copy kibana file ... '$KIB_VER
     echo '~/kibana-'$KIB_VER'.tar.gz'
-    scp -i $P_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@192.168.1.254:'~/kibana-'$KIB_VER'.tar.gz' .
+    scp -i $P_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null dongfuqiang@192.168.87.1:'~/kibana-'$KIB_VER'.tar.gz' .
     tar -zxf kibana-"$KIB_VER".tar.gz
     mv $(find ./ -maxdepth 2 -type d -name 'kibana*') "kibana-"$KIB_VER
 else

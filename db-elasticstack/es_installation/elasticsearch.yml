@@ -1,0 +1,24 @@
+node.name: node3
+node.attr.rack: rack3
+#path.data: /path/to/data
+#path.logs: /path/to/logs
+#bootstrap.memory_lock: true
+network.host: 172.16.10.128
+transport.port: 9303
+http.port: 9203
+discovery.seed_hosts: ["172.16.10.128:9300","172.16.10.128:9301","172.16.10.128:9303"]
+cluster.initial_master_nodes: ["node1"]
+#action.destructive_requires_name: true
+
+#xpack.security.enabled: true
+#xpack.security.transport.ssl.enabled: true
+#xpack.security.enrollment.enabled: true
+#xpack.security.http.ssl.enabled: true
+# keystore.path: certs/http.p12
+#   keystore.path: certs/transport.p12
+# xpack.security.transport.ssl:
+#   enabled: true
+# verification_mode: certificate
+# truststore.path: certs/transport.p12
+# http.host: [_local_, _site_]
+# transport.host: [_local_, _site_]

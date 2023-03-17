@@ -33,6 +33,7 @@ echo 'ES VERSION : '$ES_VER
 # https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.0-linux-x86_64.tar.gz
 TO_ES_HOME=$(find ./ -maxdepth 2 -type d -name 'elasticsearch-'$ES_VER)
 TO_KIB_HOME=$(find ./ -maxdepth 2 -type d -name 'kibana-'$ES_VER)
+
 if [ -z $TO_ES_HOME ]; then
     echo '0 > need to download elasticsearch-'$ES_VER'... '
     tar -zxf elasticsearch-"$ES_VER".tar.gz
@@ -85,8 +86,8 @@ if [[ -n $TO_KILL_KIB ]];then
     kill -9 $TO_KILL
 fi
 
-nohup $TO_KIB_HOME/bin/kibana &
-$TO_ES_HOME/bin/elasticsearch -d
+#nohup $TO_KIB_HOME/bin/kibana &
+#$TO_ES_HOME/bin/elasticsearch -d
 
 # > 4. clear once config
 # >> 4.1 清除 discovery.seed_hosts , 只允许其配置一次即可

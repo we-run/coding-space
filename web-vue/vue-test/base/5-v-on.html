@@ -1,32 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>v-on 处理用户输入事件</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <style rel="stylesheet">
-    </style>
-    <script type="application/javascript">
-        window.onload = function () {
-            this.app = new Vue({
-                el: '#app',
-                data: {
-                    message: 'Hello Vue.js!'
-                },
-                methods: {
-                    reverseMessage: function () {
-                        this.message = this.message.split('').reverse().join('')
+
+    <head>
+        <meta charset="UTF-8">
+        <title>v-on 处理用户输入事件</title>
+        <script src="./static/vue.js"></script>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="./static/element_ui_index.css">
+        <!-- 引入组件库 -->
+        <script src="./static/element_ui_index.js"></script>
+        <style rel="stylesheet">
+            body {
+                display: flex;
+                flex: auto;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+        </style>
+        <script type="application/javascript">
+            window.onload = function () {
+                Vue.component('blog-post', {
+                    props: ["post"],
+                    methods: {
+                        changeBig: function () {
+                            this.$emit('enlarge-text', 0.1)
+                            console.log(this)
+                        }
+                    },
+                    template: `
+                    <div class="blog-post">
+                    <h3>{{ post.title }}</h3>
+                    <button v-on:click="changeBig">
+                        Enlarge text
+                    </button>
+                    <div v-html="post.content"></div>
+                    </div>
+                    `
+                })
+                this.app = new Vue({
+                    el: '#app',
+                    mounted: function () {
+                        // this.change3(this.value3)
+                        // this.change2(this.value2)
+                        // this.change1(this.value1)
+                        // console.log( this.dataContainer.flatMap(it => it.childrenList))
+                        this.options = [
+                            this.dataContainer,
+                            this.dataContainer.flatMap(it => it.childrenList ? it.childrenList : []),
+                            this.dataContainer.flatMap(it => it.childrenList ? it.childrenList : []).flatMap(it => it.childrenList ? it.childrenList : [])
+                        ]
+                    },
+                    data: {
+                        value1: [],
+                        value2: [],
+                        value3: [],
+                        values: [],
+                        options: [[], [], []],
+                        dataContainer: [
+                            {
+                                "id": 1,
+                                "name": "河北",
+                                "childrenList": [
+                                    {
+                                        "id": 12,
+                                        "name": "宁晋",
+                                        "childrenList": [
+                                            {
+                                                "id": 121,
+                                                "name": "大陆村",
+                                                "childrenList": [
+                                                    {
+                                                        "id": 1211,
+                                                        "name": "常家庄1村"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": 110,
+                                        "name": "邢台",
+                                        "childrenList": [
+                                            {
+                                                "id": 111,
+                                                "name": "太子井"
+                                            },
+                                            {
+                                                "id": 112,
+                                                "name": "南石门"
+                                            }
+
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 2,
+                                "name": "山东",
+                                "childrenList": [
+                                    {
+                                        "id": 22,
+                                        "name": "潍坊",
+                                        "childrenList": [
+                                            {
+                                                "id": 222,
+                                                "name": "xxx"
+                                            }
+
+                                        ]
+                                    },
+                                    {
+                                        "id": 23,
+                                        "name": "济南",
+                                        "childrenList": [
+                                            {
+                                                "id": 233,
+                                                "name": "ddd"
+                                            }
+
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "name": "湖北"
+                            },
+                            {
+                                "id": 123,
+                                "name": "山西",
+                                "childrenList": [
+                                    {
+                                        "id": 330,
+                                        "name": "临汾",
+                                        "childrenList": [
+                                            {
+                                                "id": 333,
+                                                "name": "YYY"
+                                            }
+
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        dialogVisible: false,
+                        postFontSize: 1,
+                        message: 'Hello Vue.js!',
+                        posts: [
+                            { id: 1, title: 'My journey with Vue', content: 'xxx' },
+                            { id: 2, title: 'Blogging with Vue', content: 'YYY\nYYY' },
+                            { id: 3, title: 'Why Vue is so fun', content: 'zzz' }
+                        ],
+                        form: {
+
+                        }
+
+                    },
+                    methods: {
+                        reverseMessage: function () {
+                            this.message = this.message.split('').reverse().join('')
+                        },
+                        onEnlargeText: function (enlargeAmount) {
+                            this.postFontSize += enlargeAmount
+                            this.dialogVisible = false
+                        },
+                        handleClose(done) {
+                            this.$confirm('确认关闭？')
+                                .then(_ => {
+                                    done();
+                                })
+                                .catch(_ => { });
+                        },
+                        testEvent(message, event) {
+                            // if (event) {
+                            //     event.preventDefault()
+                            // }
+                            // alert(message)
+                            console.log(JSON.stringify(this.traverseTree2(this.dataContainer, [], 0)))
+                        },
+
+                        handleData(level, vids) {
+                            // let chains = []
+                            let opts = { 1: {}, 2: {}, 3: {} } // 收集并排重每一个选项，按照层级和选项id，进行收集，用于最后生成数据源
+                            // let allVids = [this.value1, this.value2, this.value3]
+                            let results = {}
+                            this.traverseTree(this.dataContainer, [], 0, (items) => {
+                                // console.log("  ====> ", JSON.stringify(items.map(it => { return {id : it.data.id, name : it.data.name} })))
+                                // 确保遍历到的选项链最大层级，满足数据源的层级要求（防患未然）
+                                console.log("扫描到数据链 : ", JSON.stringify(items.map(it => it.data.name)))
+                                // if (items[items.length - 1].level <= this.options.length) {
+                                // }
+                                // 针对所有出现在选项框里的选项，进行点亮记录操作 (为了级联数据源 可不用)
+                                if (vids[0].length > 0) {
+                                    if (vids[0].indexOf(items[0].data.id) != -1) {
+                                        opts[items[1].level][items[1].data.id] = items[1].data
+                                    }
+                                }
+                                if (vids[1].length > 0) {
+                                    if (vids[1].indexOf(items[1].data.id) != -1) {
+                                        opts[items[2].level][items[2].data.id] = items[2].data
+                                    }
+                                }
+                                // 标记选择 : 将选择到的数据项，按照层级和id进行匹配，记录是否选择标记
+                                // console.log("扫描到数据链 : ", JSON.stringify(items.map(it => it.data.name)))
+
+                                // [[2, 22], [3, 33], []] 每一个level上有多个选项，用于评选items上相应level位置的对象是否应该被记录选中状态
+                                vids.forEach(vid => {
+                                    let idLevel = vids.indexOf(vid)
+                                    items[idLevel].data.isSelected = vid.indexOf(items[idLevel].data.id) != -1
+                                })
+
+                                // // 获取连续，选择出的结果 （单独用于获取连续数据源）
+                                let temp = []
+                                for (let i = 0; i < items.length; i++) {
+                                    let top = items[i]
+                                    if (!top.data.isSelected) {
+                                        break
+                                    }
+                                    temp.push({ id: top.data.id, name: top.data.name })
+                                }
+
+                                console.log("即时过程 : ", JSON.stringify(vids), "VS", JSON.stringify(results))
+                                if (temp.length == items.length) {
+                                    results[temp.map(t => t.id).join("-")] = temp
+                                }
+                                // console.log("temp >> ", temp)
+                            })
+                            // 更新级联数据源 (可不用)
+                            let newOption = [[], [], []]
+                            Object.keys(opts).forEach(i => {
+                                if (newOption.length >= i) {
+                                    newOption[i - 1] = Object.values(opts[i])
+                                }
+                            })
+                            this.options = [this.dataContainer, newOption[1], newOption[2]]
+                            // console.log(this.dataContainer)
+                            console.log("即时结果 : ", JSON.stringify(results))
+                            // return chains
+                        },
+                        traverseTree(nodes, chains, level, handle) {
+                            if (nodes == undefined || nodes == null) {
+                                chains.push([])
+                                return
+                            }
+                            level++
+                            nodes.forEach(it => {
+                                this.traverseTree(it.childrenList, chains, level) //递归继续遍历子节点
+                                if (it.childrenList) {
+                                    for (let i = chains.length - 1; i >= 0; i--) {
+                                        if (chains[i].filter(it => it.level <= level).length > 0) {
+                                            // 向前回溯的过程中，找到每一个chain中如果与当前level相当或更小，则遇到填充边界，即刻退出
+                                            break
+                                        }
+                                        chains[i].splice(0, 0, { level: level, data: it })
+                                        if (level == 1 && handle) { // 完整的一个树退出时，遍历所有分支链
+                                            handle(chains[i])
+                                        }
+                                    }
+                                } else {
+                                    chains[chains.length - 1].splice(0, 0, { level: level, data: it })
+                                }
+                                // console.log("chains: ", JSON.stringify(chains.map(ch => ch.map(it => it.data.name))))
+                            })
+                            return chains
+                        },
+                        traverseTree2(nodes, collector, level) {
+                            if (nodes == undefined || nodes == null || level >= 4) {
+                                return collector
+                            }
+                            level++
+                            collector.push({ "children": [] })
+                            nodes.forEach(it => {
+                                Object.keys(it).forEach(k => {
+                                    if (k != "childrenList") {
+                                        collector[collector.length - 1][k] = it[k]
+                                    }
+                                })
+                                this.traverseTree2(it.childrenList, collector[nodes.indexOf(it)]["children"], level) //递归继续遍历子节点
+                            })
+                            return collector
+                        },
+                        change1(vids) {
+                            // this.value1 = vids //Array.from(new Set(this.handleData(1, vids).filter(it => it.length > 0).map(it => it[0].data.id)))
+                            this.handleData(1, [vids, this.value2, this.value3])
+                        },
+                        change2(vids) {
+                            // this.value2 = vids
+                            this.handleData(2, [this.value1, vids, this.value3])
+                        },
+                        change3(vids) {
+                            // this.value3= vids
+                            this.handleData(3, [this.value1, this.value2, vids])
+                        },
+
                     }
-                }
-            })
-        }
-    </script>
-</head>
-<body>
-    <div id="app">
-        <p>{{message}}</p>
-        <button v-on:click="reverseMessage">翻转字符串？</button>
-        <button @click="reverseMessage">翻转字符串？</button>
-    </div>
-</body>
+                })
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="app" :style="{ fontSize: postFontSize + 'em' }">
+            <p>{{message}}</p>
+            <button v-on:click="reverseMessage">翻转字符串？</button>
+            <button @click="reverseMessage">翻转字符串？</button>
+            <el-button type="text" @click="testEvent('tt', $event)">点击打开 Dialog</el-button>
+            <!-- <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+                <span>这是一段信息</span>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                </span>
+                <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"
+                    v-on:enlarge-text="onEnlargeText"></blog-post>
+            </el-dialog> -->
+            <!-- <div class="m-4">
+                <el-select v-model="value1" multiple placeholder="Select" style="width: 240px" @change="change1">
+                    <el-option v-for="item in options[0]" :key="item.id" :label="item.name" :value="item.id" />
+                </el-select>
+                <el-select v-model="value2" multiple placeholder="Select" style="width: 240px" @change="change2">
+                    <el-option v-for="item in options[1]" :key="item.id" :label="item.name" :value="item.id" />
+                </el-select>
+                <el-select v-model="value3" multiple placeholder="Select" style="width: 240px" @change="change3">
+                    <el-option v-for="item in options[2]" :key="item.id" :label="item.name" :value="item.id" />
+                </el-select>
+            </div> -->
+            
+        </div>
+    </body>
+
 </html>

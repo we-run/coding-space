@@ -1,113 +1,135 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>vue chapter 1</title>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<style rel="stylesheet">
-		p {
-			margin: 0px;
-			padding: 0px;
-			border: 1px red solid;
-		}
-		/* 可以设置不同的进入和离开动画 */
-		/* 设置持续时间和动画函数 */
-		.slide-fade-enter-active {
-			transition: all .3s ease;
-		}
-		.slide-fade-leave-active {
-			transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-		}
-		.slide-fade-enter, .slide-fade-leave-to
-			/* .slide-fade-leave-active for below version 2.1.8 */ {
-			transform: translateX(10px);
-			opacity: 0;
-		}
-		div {
-			margin: 10px 10px 10px 10px;
-		}
-		#block1 {
-			border: 1px red solid;
-			overflow: auto;
-			width: 50%;
-		}
-		#block2 {
-			border: 1px black solid;
-			/*float: left;*/
-			display: none;
-		}
-		#block3 {
-			display: none;
-			border: 1px maroon solid;
-			position: fixed;
-		}
-		img {
-			float: right;
-			width: 80%;
-			height: 50px;
-		}
-	</style>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>vue chapter 1</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script type="module">
+			import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.esm.browser.js'
+		</script>
+		<style rel="stylesheet">
+			p {
+				margin: 0px;
+				padding: 0px;
+				border: 1px red solid;
+			}
+
+			/* 可以设置不同的进入和离开动画 */
+			/* 设置持续时间和动画函数 */
+			.slide-fade-enter-active {
+				transition: all .3s ease;
+			}
+
+			.slide-fade-leave-active {
+				transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+			}
+
+			.slide-fade-enter,
+			.slide-fade-leave-to
+
+			/* .slide-fade-leave-active for below version 2.1.8 */
+			{
+				transform: translateX(10px);
+				opacity: 0;
+			}
+
+			div {
+				margin: 10px 10px 10px 10px;
+			}
+
+			#block1 {
+				border: 1px red solid;
+				overflow: auto;
+				width: 50%;
+			}
+
+			#block2 {
+				border: 1px black solid;
+				/*float: left;*/
+				display: none;
+			}
+
+			#block3 {
+				display: none;
+				border: 1px maroon solid;
+				position: fixed;
+			}
+
+			img {
+				float: right;
+				width: 80%;
+				height: 50px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div id="block1">
+				<!-- <img src="./img/123.png"/> -->
+				<ul>
+					<li v-for="chapter in items">
+						<a v-bind:href="chapter.url">{{ chapter.title }}</a>
+					</li>
+				</ul>
+			</div>
+			<div id="block2">
+				<ul>
+					<li v-for="chapter in items">
+						<a v-bind:href="chapter.url">{{ chapter.title }}</a>
+					</li>
+				</ul>
+			</div>
+			<div id="block3">ddd</div>
+		</div>
+	</body>
 	<script type="text/javascript">
 		window.onload = () => {
-		    function Item (url, title) {
-		        this.url = url
-				this.title = title
-			}
-			arr =
-				[
-				    ['./1-start.html','start vue - 体会VUE变量赋值'],
-					['./2-v-bind.html','v-bind - vue属性变量赋值'],
-					['./3-v-if.html','v-if - 控制DOM display - 真消失'],
-                    ['./4-v-for.html','v-for - 控制DOM创建'],
-                    ['./5-v-on.html','v-on - 给DOM绑定一个方法, 注意 可以参数(冒号形式 v-on:click="doSomething")和修饰符(点语法形式v-on:submit.prevent="onSubmit")'],
-					['./6-v-model.html','v-model - 双向绑定 - ！！！一定记住 双向的意义！！！'],
-                    ['./7-vue-component.html', 'vue-component - 定义组件,组件内所需资源和数据，组件容器负责将其v-bind传入'],
-					['./8-template-syntax.html', 'vue 的模板语法（纯html） ，也可以直接使用底层函数 render 渲染jsx语法的虚拟DOM'],
-					['./9-v-once.html', 'v-once - 一次性赋值，会影响该节点的其他数据的绑定效果'],
-					['./10-v-html.html', 'v-html - 双大括号的语法（mustaches）只解释为纯文本，如果需要输出html代码，需要v-html'],
-					['','----------'],
-					['./11-computed-attr.html', '计算属性是为了应对复杂的逻辑才能产生属性值得场景的'],
-					['./12-v-bind-class&style.html', '动态切换class']
-				]
-			objarr = []
-			arr.forEach((obj) => {
-			    item = Object.create(Item.prototype)
-				console.log(item)
-				item.url = obj[0]
-				item.title = obj[1]
-			    objarr.push(item)
-			})
-			console.log(objarr)
-			this.app = new Vue({
-				el: '#app',
-				data: {
-					message: 'Hello Vue!',
-                    show: true,
-                    items: objarr
-				}
-			})
 		}
-	</script>
-</head>
-<body>
-<div id="app">
-	<div id="block1">
-		<img src="./img/123.png"/>
-		<ul>
-			<li v-for="chapter in items">
-				<a v-bind:href="chapter.url">{{ chapter.title }}</a>
-			</li>
-		</ul>
-	</div>
 
-	<div id="block2">
-		<ul>
-			<li v-for="chapter in items">
-				<a v-bind:href="chapter.url">{{ chapter.title }}</a>
-			</li>
-		</ul>
-	</div>
-	<div id="block3">ddd</div>
-</div>
-</body>
+		function Item(url, title) {
+			this.url = url
+			this.title = title
+		}
+		arr =
+			[
+				['./1-start.html', 'start vue - 体会VUE变量赋值'],
+				['./2-v-bind.html', 'v-bind - vue属性变量赋值'],
+				['./3-v-if.html', 'v-if - 控制DOM display - 真消失'],
+				['./4-v-for.html', 'v-for - 控制DOM创建'],
+				['./5-v-on.html', 'v-on - 给DOM绑定一个方法, 注意 可以参数(冒号形式 v-on:click="doSomething")和修饰符(点语法形式v-on:submit.prevent="onSubmit")'],
+				['./6-v-model.html', 'v-model - 双向绑定 - ！！！一定记住 双向的意义！！！'],
+				['./7-vue-component.html', 'vue-component - 定义组件,组件内所需资源和数据，组件容器负责将其v-bind传入'],
+				['./8-template-syntax.html', 'vue 的模板语法（纯html） ，也可以直接使用底层函数 render 渲染jsx语法的虚拟DOM'],
+				['./9-v-once.html', 'v-once - 一次性赋值，会影响该节点的其他数据的绑定效果'],
+				['./10-v-html.html', 'v-html - 双大括号的语法（mustaches）只解释为纯文本，如果需要输出html代码，需要v-html'],
+				['', '----------'],
+				['./11-computed-attr.html', '计算属性是为了应对复杂的逻辑才能产生属性值得场景的'],
+				['./12-v-bind-class&style.html', '动态切换class']
+			]
+		objarr = []
+		arr.forEach((obj) => {
+			item = Object.create(Item.prototype)
+			console.log(item)
+			item.url = obj[0]
+			item.title = obj[1]
+			objarr.push(item)
+		})
+		console.log(objarr)
+		this.app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello Vue!',
+				show: true,
+				items: objarr
+			}
+		})
+	</script>
+
 </html>

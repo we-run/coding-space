@@ -22,6 +22,19 @@ pyinstaller -w -F -p . my_utils.py
 
 ## 运行环境安装
 
+### 虚拟环境初始化和安装
+```shell
+# 创建工作环境
+python3 -m venv /Volumes/DFQ/PAN/DEVSpace/Labs/coding-space/base-python/m1
+python -m venv .
+python -m venv ./venv
+python3 -m venv env
+# 激活
+source /Users/dongfuqiang/Desktop/bot-learner/venv/bin/activate
+/Volumes/DFQ/PAN/DEVSpace/Labs/coding-space/base-python/der-utils/venv/bin/python -m pip install --upgrade pip
+sh ./venv/bin/activate
+```
+
 ### Resinstall Xcode
 sudo rm -rf /Library/Developer/CommandLineTools
 xcode-select --install
@@ -51,7 +64,7 @@ env \
   PKG_CONFIG_PATH="$(brew --prefix tcl-tk)/lib/pkgconfig" \
   CFLAGS="-I$(brew --prefix tcl-tk)/include -I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix zlib)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" \
   LDFLAGS="-I$(brew --prefix tcl-tk)/lib -L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib"
-  pyenv install --patch 3.8.3 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
+  pyenv install --patch 3.8.3 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch?full_index=1)
 ```
   
 ```shell

@@ -3,7 +3,7 @@ my_run = {
     "echo": True
 }
 
-ES_VER = '7.13.0'
+ES_VER = '8.4.0'
 pre_settings = [
     #############
     # First Stage : NIT TODOS : set system envrionments for elasticsearch service
@@ -14,17 +14,17 @@ pre_settings = [
     #     "steps": [
     #         [
     #             {
-    #                 "via": "root@103.105.200.216:22",
+    #                 "via": "dongfuqiang@127.0.0.1:22",
     #                 # #"pwd": "_DFQQFD123_", # disable the 'pwd' field and enable the 'pkey' field
     #                 "pkey": "./ssh_certs/idc"
     #             },
     #             {
-    #                 "via": "root@192.168.1.11:22",
-    #                 "pwd": "dev123",
+    #                 "via": "root@192.168.87.131:22",
+    #                 "pwd": "dfqqfd123",
     #                 "pkey": "./ssh_certs/idc",
     #                 "auto_complete": {  # auto set password for new es user
-    #                     "New password:": "dev123",
-    #                     "Retype new password:": "dev123"
+    #                     "New password:": "dfqqfd123",
+    #                     "Retype new password:": "dfqqfd123"
     #                 },
     #                 "actions": [
     #                     {
@@ -40,17 +40,17 @@ pre_settings = [
     #         ],
     #         [
     #             {
-    #                 "via": "root@103.105.200.216:22",
+    #                 "via": "dongfuqiang@127.0.0.1:22",
     #                 #"pwd": "_DFQQFD123_",
     #                 "pkey": "./ssh_certs/idc"
     #             },
     #             {
-    #                 "via": "root@192.168.1.12:22",
-    #                 "pwd": "dev123",
+    #                 "via": "root@192.168.87.130:22",
+    #                 "pwd": "dfqqfd123",
     #                 "pkey": "./ssh_certs/idc",
     #                 "auto_complete": {  # auto set password for new es user
-    #                     "New password:": "dev123",
-    #                     "Retype new password:": "dev123"
+    #                     "New password:": "dfqqfd123",
+    #                     "Retype new password:": "dfqqfd123"
     #                 },
     #                 "actions": [
     #                     {
@@ -66,17 +66,17 @@ pre_settings = [
     #         ],
     #         [
     #             {
-    #                 "via": "root@103.105.200.216:22",
+    #                 "via": "dongfuqiang@127.0.0.1:22",
     #                 #"pwd": "_DFQQFD123_",
     #                 "pkey": "./ssh_certs/idc"
     #             },
     #             {
-    #                 "via": "root@192.168.1.13:22",
-    #                 "pwd": "dev123",
+    #                 "via": "root@192.168.87.132:22",
+    #                 "pwd": "dfqqfd123",
     #                 "pkey": "./ssh_certs/idc",
     #                 "auto_complete": {  # auto set password for new es user
-    #                     "New password:": "dev123",
-    #                     "Retype new password:": "dev123"
+    #                     "New password:": "dfqqfd123",
+    #                     "Retype new password:": "dfqqfd123"
     #                 },
     #                 "actions": [
     #                     {
@@ -101,7 +101,7 @@ pre_settings = [
     #     "steps": [
     #         [
     #             {
-    #                 "via": "root@103.105.200.216:22",
+    #                 "via": "dongfuqiang@127.0.0.1:22",
     #                 #"pwd": "_DFQQFD123_",
     #                 "pkey": "./ssh_certs/idc",
     #                 "actions": [
@@ -124,7 +124,7 @@ pre_settings = [
     #     "steps": [
     #         [
     #             {
-    #                 "via": "root@103.105.200.216:22",
+    #                 "via": "dongfuqiang@127.0.0.1:22",
     #                 #"pwd": "_DFQQFD123_",
     #                 "pkey": "./ssh_certs/idc",
     #                 "actions": [
@@ -145,26 +145,26 @@ pre_settings = [
     # Third Stage : SET ES : downloads the specified version of elasticsearch
     #############
     {
-        "sync": False,
-        "description": "Read the cached resources and uncompress them,then config them completly.",
+        "sync": True,
+        "description": "Read the cached resources and uncompress them,then config them completely.",
         "steps": [
             [
                 {
-                    "via": "root@103.105.200.216:22",
+                    "via": "dongfuqiang@127.0.0.1:22",
                     #"pwd": "_DFQQFD123_",
                     "pkey": "./ssh_certs/idc"
                 },
                 {
-                    "via": "es@192.168.1.11:22",
-                    "pwd": "dev123",
+                    "via": "es@192.168.87.131:22",
+                    "pwd": "dfqqfd123",
                     "pkey": "./ssh_certs/idc",
                     "auto_complete": {  # auto set password for new es user
-                        "New password:": "dev123",
-                        "Retype new password:": "dev123"
+                        "New password:": "dfqqfd123",
+                        "Retype new password:": "dfqqfd123"
                     },
                     "actions": [
                         {
-                            "description": ">>> es@192.168.1.11:22 >> action 1 >> checkout and download es!",
+                            "description": ">>> es@192.168.87.131:22 >> action 1 >> checkout and download es!",
                             "env": {
                                 "ES_VER": ES_VER,
                                 "P_KEY": "~/.ssh/idc"
@@ -174,7 +174,7 @@ pre_settings = [
                             # "sh_raw": "/usr/sbin/ip a | egrep 'inet 192' | awk '{print $2}'"
                         },
                         {
-                            "description": ">>> es@192.168.1.11:22 >> action 2 >> reconfig es!",
+                            "description": ">>> es@192.168.87.131:22 >> action 2 >> reconfig es!",
                             "env": {
                                 "ES_VER": ES_VER,
                                 "CONFIG_FILE": "/home/es/elasticsearch-" + ES_VER + "/config/elasticsearch.yml"
@@ -187,16 +187,17 @@ pre_settings = [
                                 "#path.data": "/path/to/data",
                                 "#path.logs": "/path/to/logs",
                                 "bootstrap.memory_lock": "true",
-                                "network.host": "192.168.1.11",
+                                "network.host": "192.168.87.131",
                                 "http.port": "9202",
-                                "discovery.seed_hosts": "[\"192.168.1.11\", \"192.168.1.12\", \"192.168.1.13\"]",
+                                # "discovery.seed_hosts": "[\"192.168.87.131\", \"192.168.87.130\", \"192.168.87.132\"]",
                                 "cluster.initial_master_nodes": "[\"node-1\"]",
                                 "action.destructive_requires_name": "true",
-                                "xpack.security.http.ssl.enabled": "true"
+                                # "xpack.security.enabled": "true",
+                                # "xpack.security.transport.ssl.enabled": "true"
                             }
                         },
                         {
-                            "description": ">>> es@192.168.1.11:22 >> action 2 >> luanch es!",
+                            "description": ">>> es@192.168.87.131:22 >> action 2 >> luanch es!",
                             "env": {
                                 "ES_VER": ES_VER,
                             },
@@ -208,21 +209,21 @@ pre_settings = [
             ],
             [
                 {
-                    "via": "root@103.105.200.216:22",
+                    "via": "dongfuqiang@127.0.0.1:22",
                     #"pwd": "_DFQQFD123_",
                     "pkey": "./ssh_certs/idc"
                 },
                 {
-                    "via": "es@192.168.1.12:22",
-                    "pwd": "dev123",
+                    "via": "es@192.168.87.130:22",
+                    "pwd": "dfqqfd123",
                     "pkey": "./ssh_certs/idc",
                     "auto_complete": {  # auto set password for new es user
-                        "New password:": "dev123",
-                        "Retype new password:": "dev123"
+                        "New password:": "dfqqfd123",
+                        "Retype new password:": "dfqqfd123"
                     },
                     "actions": [
                         {
-                            "description": ">>> es@192.168.1.12:22 >> action 1 >> checkout and download es!",
+                            "description": ">>> es@192.168.87.130:22 >> action 1 >> checkout and download es!",
                             "env": {
                                 "ES_VER": ES_VER,
                                 "P_KEY": "~/.ssh/idc"
@@ -232,7 +233,7 @@ pre_settings = [
                             # "sh_raw": "/usr/sbin/ip a | egrep 'inet 192' | awk '{print $2}'"
                         },
                         {
-                            "description": ">>> es@192.168.1.12:22 >> action 2 >> reconfig es!",
+                            "description": ">>> es@192.168.87.130:22 >> action 2 >> reconfig es!",
                             "env": {
                                 "ES_VER": ES_VER,
                                 "CONFIG_FILE": "/home/es/elasticsearch-" + ES_VER + "/config/elasticsearch.yml"
@@ -245,16 +246,17 @@ pre_settings = [
                                 "#path.data": "/path/to/data",
                                 "#path.logs": "/path/to/logs",
                                 "bootstrap.memory_lock": "true",
-                                "network.host": "192.168.1.12",
+                                "network.host": "192.168.87.130",
                                 "http.port": "9201",
-                                "discovery.seed_hosts": "[\"192.168.1.11\", \"192.168.1.12\", \"192.168.1.13\"]",
-                                "cluster.initial_master_nodes": "[\"node-1\"]",
+                                "discovery.seed_hosts": "[\"192.168.87.131\", \"192.168.87.130\", \"192.168.87.132\"]",
+                                # "cluster.initial_master_nodes": "[\"node-1\"]",
                                 "action.destructive_requires_name": "true",
-                                "xpack.security.http.ssl.enabled": "true"
+                                # "xpack.security.enabled": "true",
+                                # "xpack.security.transport.ssl.enabled": "true"
                             }
                         },
                         {
-                            "description": ">>> es@192.168.1.11:22 >> action 3 >> launch es.",
+                            "description": ">>> es@192.168.87.131:22 >> action 3 >> launch es.",
                             "env": {
                                 "ES_VER": ES_VER,
                                 "P_KEY": "~/.ssh/idc"
@@ -267,21 +269,21 @@ pre_settings = [
             ],
             [
                 {
-                    "via": "root@103.105.200.216:22",
+                    "via": "dongfuqiang@127.0.0.1:22",
                     #"pwd": "_DFQQFD123_",
                     "pkey": "./ssh_certs/idc"
                 },
                 {
-                    "via": "es@192.168.1.13:22",
-                    "pwd": "dev123",
+                    "via": "es@192.168.87.132:22",
+                    "pwd": "dfqqfd123",
                     "pkey": "./ssh_certs/idc",
                     "auto_complete": {  # auto set password for new es user
-                        "New password:": "dev123",
-                        "Retype new password:": "dev123"
+                        "New password:": "dfqqfd123",
+                        "Retype new password:": "dfqqfd123"
                     },
                     "actions": [
                         {  # download es and kibana file and unpack thme
-                            "description": ">>> es@192.168.1.13:22 >> action 1 >> download es and kibana file and unpack thme",
+                            "description": ">>> es@192.168.87.132:22 >> action 1 >> download es and kibana file and unpack thme",
                             "env": {
                                 "ES_VER": ES_VER,
                                 "P_KEY": "~/.ssh/idc",
@@ -290,13 +292,13 @@ pre_settings = [
                             },
                             "config": {
                                 "INPUT_FILE": "./es/cluster/kibana.yml",
-                                "server.host": "192.168.1.13"
+                                "server.host": "192.168.87.132"
                             },
                             "sh_file": "./es/es_res_prepare.sh",
                             # "sh_raw": "/usr/sbin/ip a | egrep 'inet 192' | awk '{print $2}'"
                         },
                         {  # modify es config file
-                            "description": ">>> es@192.168.1.13:22 >> action 2 >> config es",
+                            "description": ">>> es@192.168.87.132:22 >> action 2 >> config es",
                             "env": {
                                 "ES_VER": ES_VER,
                                 "CONFIG_FILE": "/home/es/elasticsearch-" + ES_VER + "/config/elasticsearch.yml"
@@ -309,16 +311,17 @@ pre_settings = [
                                 "#path.data": "/path/to/data",
                                 "#path.logs": "/path/to/logs",
                                 "bootstrap.memory_lock": "true",
-                                "network.host": "192.168.1.13",
+                                "network.host": "192.168.87.132",
                                 "http.port": "9201",
-                                "discovery.seed_hosts": "[\"192.168.1.11\", \"192.168.1.12\", \"192.168.1.13\"]",
-                                "cluster.initial_master_nodes": "[\"node-1\"]",
+                                "discovery.seed_hosts": "[\"192.168.87.131\", \"192.168.87.130\", \"192.168.87.132\"]",
+                                # "cluster.initial_master_nodes": "[\"node-1\"]",
                                 "action.destructive_requires_name": "true",
-                                "xpack.security.http.ssl.enabled": "true"
+                                # "xpack.security.enabled": "true",
+                                # "xpack.security.transport.ssl.enabled": "true"
                             }
                         },
                         {
-                            "description": ">>> es@192.168.1.13:22 >> action 3 >> luanch es and kibana",
+                            "description": ">>> es@192.168.87.132:22 >> action 3 >> luanch es and kibana",
                             "env": {
                                 "ES_VER": ES_VER,
                             },
@@ -340,7 +343,7 @@ pre_settings = [
 #             [
 #                 {
 #                     "via": "dongfuqiang@127.0.0.1:22",
-#                     "pwd": "dev123",
+#                     "pwd": "dfqqfd123",
 #                     "actions": [
 #                         {
 #                             "description": "localhost operation ... ",
@@ -351,17 +354,17 @@ pre_settings = [
 #             ],
 #             [
 #                 {
-#                     "via": "root@103.105.200.216:22",
+#                     "via": "dongfuqiang@127.0.0.1:22",
 #                     # #"pwd": "_DFQQFD123_",
 #                     "pkey": "./ssh_certs/idc"
 #                 },
 #                 {
 #                     "via": "root@159.138.122.25:22",
-#                     # "pwd": "dev123",
+#                     # "pwd": "dfqqfd123",
 #                     "pkey": "./ssh_certs/idc",
 #                     "auto_complete": {  # auto set password for new es user
-#                         # "New password:": "dev123",
-#                         # "Retype new password:": "dev123"
+#                         # "New password:": "dfqqfd123",
+#                         # "Retype new password:": "dfqqfd123"
 #                     },
 #                     "actions": [
 #                         # {
@@ -386,17 +389,17 @@ pre_settings = [
 #             ],
 #             [
 #                 {
-#                     "via": "root@103.105.200.216:22",
+#                     "via": "dongfuqiang@127.0.0.1:22",
 #                     # #"pwd": "_DFQQFD123_",
 #                     "pkey": "./ssh_certs/idc"
 #                 },
 #                 {
 #                     "via": "root@158.247.233.3:22",
-#                     # "pwd": "dev123",
+#                     # "pwd": "dfqqfd123",
 #                     "pkey": "./ssh_certs/idc",
 #                     "auto_complete": {  # auto set password for new es user
-#                         # "New password:": "dev123",
-#                         # "Retype new password:": "dev123"
+#                         # "New password:": "dfqqfd123",
+#                         # "Retype new password:": "dfqqfd123"
 #                     },
 #                     "actions": [
 #                         # {

@@ -48,6 +48,7 @@ target_include_directories(Hello PUBLIC
                           )
 
 
+tar
 
 install(TARGETS Hello DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/HelloConfig.h" DESTINATION include)

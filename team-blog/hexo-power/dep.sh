@@ -15,8 +15,15 @@ npx hexo g
 mv public team-blog
 tar zcvf team-blog.tar.gz team-blog
 rm -rf $WORK_ROOT/team-blog
-ssh vpn_vps 'rm -rf /etc/nginx/wordpress/team-blog'
-scp -v team-blog.tar.gz vpn_vps:'/etc/nginx/wordpress'
-ssh vpn_vps 'cd /etc/nginx/wordpress && tar zxvf team-blog.tar.gz'
-ssh vpn_vps 'rm -f /etc/nginx/wordpress/team-blog.tar.gz'
+ssh my_huawei 'rm -rf /www/*'
+# ssh vpn_vps_1 'rm -rf /var/www/*'
+scp -v team-blog.tar.gz my_huawei:'/www/'
+# scp -v team-blog.tar.gz vpn_vps_1:'/var/www/'
+ssh my_huawei 'cd /www && tar zxvf team-blog.tar.gz'
+# ssh vpn_vps_1 'cd /var/www && tar zxvf team-blog.tar.gz'
+ssh my_huawei 'rm -f /www/team-blog.tar.gz'
+# ssh vpn_vps_1 'rm -f /var/www/team-blog.tar.gz'
 rm -f team-blog.tar.gz
+
+
+

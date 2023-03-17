@@ -6,14 +6,14 @@ node.attr.rack: $node.attr.rack
 #bootstrap.memory_lock: true
 network.host: $network.host
 http.port: $http.port
-discovery.seed_hosts: $discovery.seed_hosts
+#discovery.seed_hosts: $discovery.seed_hosts
 #cluster.initial_master_nodes: $cluster.initial_master_nodes
 action.destructive_requires_name: true
 
-# xpack.security.enabled: $xpack.security.enabled
-# xpack.security.enrollment.enabled: $xpack.security.enrollment.enabled
-# xpack.security.http.ssl:
-#   enabled: $xpack.security.http.ssl.enabled
+#xpack.security.enabled: $xpack.security.enabled
+#xpack.security.transport.ssl.enabled: $xpack.security.transport.ssl.enabled
+#xpack.security.enrollment.enabled: $xpack.security.enrollment.enabled
+#xpack.security.http.ssl.enabled: $xpack.security.http.ssl.enabled
 # keystore.path: certs/http.p12
 #   keystore.path: certs/transport.p12
 # xpack.security.transport.ssl:

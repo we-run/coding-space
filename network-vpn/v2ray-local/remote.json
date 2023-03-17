@@ -1,0 +1,63 @@
+{
+    "log": {
+          "access": "./log/remote_access.log",
+          "error": "./log/remote_error.log",
+          "loglevel": "debug"
+      },
+    "inbounds": [
+      {
+        "port":29923,
+        "listen": "127.0.0.1",
+        "tag": "vmess-in",
+        "protocol": "vmess",
+        "settings": {
+          "clients": [
+            {
+        "id":"ce98e5cf-91b3-4680-a81c-88c7e0957ef4",
+              "alterId": 64
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "wsSettings": {
+        "path":"/fe91ac/"
+          }
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "settings": { },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": { },
+        "tag": "blocked"
+      }
+    ],
+    "dns": {
+      "servers": [
+        "https+local://1.1.1.1/dns-query",
+        "1.1.1.1",
+        "1.0.0.1",
+        "8.8.8.8",
+        "8.8.4.4",
+        "localhost"
+      ]
+    },
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "inboundTag": [
+            "vmess-in"
+          ],
+          "outboundTag": "direct"
+        }
+      ]
+    }
+  }

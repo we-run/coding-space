@@ -23,3 +23,41 @@
 2022/07/02 17:46:34 [Info] transport/internet/tcp: listening TCP on 127.0.0.1:21261
 2022/07/02 17:46:34 [Warning] V2Ray 5.0.7 started
 2022/07/02 17:46:36 [Debug] app/log: Logger closing
+2022/10/07 13:39:23 [Debug] app/log: Logger started
+2022/10/07 13:39:23 [Info] app/dns: DNS: created localhost client
+2022/10/07 13:39:23 [Debug] app/proxyman/inbound: creating stream worker on 0.0.0.0:7008
+2022/10/07 13:39:23 [Info] transport/internet/tcp: listening TCP on 0.0.0.0:7008
+2022/10/07 13:39:23 [Warning] V2Ray 5.0.7 started
+2022/10/07 13:39:43 [Debug] [3903140332] proxy/dokodemo: processing connection from: 127.0.0.1:59369
+2022/10/07 13:39:43 [Info] [3903140332] proxy/dokodemo: received request for 127.0.0.1:59369
+2022/10/07 13:39:43 [Info] [3903140332] app/dispatcher: taking detour [proxy] for [tcp:v.daqiang.me:4443]
+2022/10/07 13:39:43 [Info] [3903140332] transport/internet/websocket: creating connection to tcp:v.daqiang.me:4443
+2022/10/07 13:39:45 [Info] [3903140332] proxy/vmess/outbound: tunneling request to tcp:v.daqiang.me:4443 via v.daqiang.me:4443
+2022/10/07 13:39:45 [Info] [3903140332] app/proxyman/inbound: connection ends > proxy/dokodemo: connection ends > proxy/dokodemo: failed to transport request > read tcp 127.0.0.1:7008->127.0.0.1:59369: read: connection reset by peer
+2022/10/07 13:39:45 [Info] [3903140332] app/proxyman/outbound: failed to process outbound traffic > proxy/vmess/outbound: connection ends > context canceled
+2022/10/07 13:40:42 [Debug] [1041330857] proxy/dokodemo: processing connection from: 127.0.0.1:59443
+2022/10/07 13:40:42 [Info] [1041330857] proxy/dokodemo: received request for 127.0.0.1:59443
+2022/10/07 13:40:42 [Info] [1041330857] app/dispatcher: taking detour [proxy] for [tcp:v.daqiang.me:4443]
+2022/10/07 13:40:42 [Info] [1041330857] transport/internet/websocket: creating connection to tcp:v.daqiang.me:4443
+2022/10/07 13:40:43 [Info] [1041330857] proxy/vmess/outbound: tunneling request to tcp:v.daqiang.me:4443 via v.daqiang.me:4443
+2022/10/07 13:40:44 [Info] [1041330857] app/proxyman/inbound: connection ends > proxy/dokodemo: connection ends > proxy/dokodemo: failed to transport request > read tcp 127.0.0.1:7008->127.0.0.1:59443: read: connection reset by peer
+2022/10/07 13:40:44 [Info] [1041330857] app/proxyman/outbound: failed to process outbound traffic > proxy/vmess/outbound: connection ends > context canceled
+2022/10/07 14:08:36 [Debug] app/log: Logger started
+2022/10/07 14:08:36 [Info] app/dns: DNS: created localhost client
+2022/10/07 14:08:36 [Debug] app/proxyman/inbound: creating stream worker on 0.0.0.0:7008
+2022/10/07 14:08:36 [Debug] app/proxyman/inbound: creating stream worker on 0.0.0.0:7009
+2022/10/07 14:08:36 [Info] transport/internet/tcp: listening TCP on 0.0.0.0:7008
+2022/10/07 14:08:36 [Info] transport/internet/tcp: listening TCP on 0.0.0.0:7009
+2022/10/07 14:08:36 [Warning] V2Ray 5.0.7 started
+2022/10/07 14:08:40 [Debug] [683051311] proxy/dokodemo: processing connection from: 127.0.0.1:63586
+2022/10/07 14:08:40 [Info] [683051311] proxy/dokodemo: received request for 127.0.0.1:63586
+2022/10/07 14:08:40 [Info] [683051311] app/dispatcher: taking detour [proxy] for [tcp:v.daqiang.me:4443]
+2022/10/07 14:08:40 [Info] [683051311] transport/internet/websocket: creating connection to tcp:v.daqiang.me:4443
+2022/10/07 14:08:41 [Info] [683051311] proxy/vmess/outbound: tunneling request to tcp:v.daqiang.me:4443 via v.daqiang.me:4443
+2022/10/07 14:08:42 [Info] [683051311] app/proxyman/inbound: connection ends > proxy/dokodemo: connection ends > proxy/dokodemo: failed to transport request > read tcp 127.0.0.1:7008->127.0.0.1:63586: read: connection reset by peer
+2022/10/07 14:08:42 [Info] [683051311] app/proxyman/outbound: failed to process outbound traffic > proxy/vmess/outbound: connection ends > context canceled
+2022/10/07 14:09:25 [Info] [1813504039] proxy/socks: TCP Connect request to tcp:142.251.43.14:443
+2022/10/07 14:09:25 [Info] [1813504039] app/dispatcher: sniffed domain: google.com
+2022/10/07 14:09:25 [Warning] [1813504039] app/dispatcher: default route for tcp:google.com:443
+2022/10/07 14:09:25 [Info] [1813504039] transport/internet/websocket: creating connection to tcp:v.daqiang.me:4443
+2022/10/07 14:09:26 [Info] [1813504039] proxy/vmess/outbound: tunneling request to tcp:google.com:443 via v.daqiang.me:4443

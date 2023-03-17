@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>v-on 处理用户输入事件</title>
+        <script src="./static/vue.js"></script>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="./static/element_ui_index.css">
+        <!-- 引入组件库 -->
+        <script src="./static/element_ui_index.js"></script>
+        <style rel="stylesheet">
+            body {
+                display: flex;
+                flex: auto;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+        </style>
+        <script type="application/javascript">
+            window.onload = function () {
+                Vue.component('blog-post', {
+                    props: ["post"],
+                    methods: {
+                        changeBig: function () {
+                            this.$emit('enlarge-text', 0.1)
+                            console.log(this)
+                        }
+                    },
+                    template: `
+                    <div class="blog-post">
+                    <h3>{{ post.title }}</h3>
+                    <button v-on:click="changeBig">
+                        Enlarge text
+                    </button>
+                    <div v-html="post.content"></div>
+                    </div>
+                    `
+                })
+                this.app = new Vue({
+                    el: '#app',
+                    mounted: function () {
+                    },
+                    data() {
+                        return {
+                            dialogVisible: false,
+                            postFontSize: 1,
+                            message: 'Hello Vue.js!',
+                            posts: [
+                                { id: 1, title: 'My journey with Vue', content: 'xxx' },
+                                { id: 2, title: 'Blogging with Vue', content: 'YYY\nYYY' },
+                                { id: 3, title: 'Why Vue is so fun', content: 'zzz' }
+                            ],
+                            form: {
+                                alertlevel: [
+
+                                ],
+                                alertLevelRadio: "",
+                            },
+                            alertLevelList: [
+                                { label: "红", value: null, color: "red" },
+                                { label: "黄", value: null, color: "yellow" },
+                                { label: "蓝", value: null, color: "blue" }
+                            ],
+                            rules: {
+                                r1: [
+                                    { validator: function(rule, value, callback) {
+                                        console.log("valid : ", rule, value)
+                                        callback(new Error('请再次输入密码'))
+                                    }, trigger: 'blur' }
+                                ]
+                            }
+                        }
+                    },
+                    methods: {
+                        reverseMessage: function () {
+                            this.message = this.message.split('').reverse().join('')
+                        },
+                        onEnlargeText: function (enlargeAmount) {
+                            this.postFontSize += enlargeAmount
+                            this.dialogVisible = false
+                        },
+                        handleClose(done) {
+                            this.$confirm('确认关闭？')
+                                .then(_ => {
+                                    done();
+                                })
+                                .catch(_ => { });
+                        },
+                        testEvent(message, event) {
+                            // if (event) {
+                            //     event.preventDefault()
+                            // }
+                            // alert(message)
+                            // console.log(JSON.stringify(this.traverseTree2(this.dataContainer, [], 0)))
+                            console.log(this.form.alertlevel)
+                        },
+                        handleInput(item) {
+
+                        },
+                        handleLevel(level) {
+
+                        },
+                        changeRadio(level) {
+
+                        },
+                        submitForm(formName) {
+                            this.$refs[formName].validate((valid) => {
+                                if (valid) {
+                                    alert('submit!');
+                                } else {
+                                    console.log('error submit!!');
+                                    return false;
+                                }
+                            });
+                        },
+                        resetForm(formName) {
+                            this.$refs[formName].resetFields();
+                        }
+                    }
+                })
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="app" :style="{ fontSize: postFontSize + 'em' }">
+            <p>{{message}}</p>
+            <button v-on:click="reverseMessage">翻转字符串？</button>
+            <button @click="reverseMessage">翻转字符串？</button>
+            <el-button type="text" @click="testEvent('tt', $event)">点击打开 Dialog</el-button>
+            <el-form label-width="100px" :model="form" ref="ruleForm">
+                <el-form-item label="预警等级" prop="r1">
+                    <el-checkbox-group v-model="form.alertlevel" @change="handleLevel">
+                        <el-checkbox class="checkBox" v-for="(item, index) in alertLevelList" :label="item.label"
+                            :key="index">
+                            <span class="colorCircle" :class="item.color"></span>
+                            {{item.label}}
+                            <el-input class="levelValue" v-model="item.value" @focus="handleInput(item)"
+                                @blur="handleLevel"></el-input>
+                        </el-checkbox>
+                    </el-checkbox-group>
+                </el-form-item>
+                <!-- <el-form-item label="预警等级:">
+                    <el-radio-group v-model="form.alertLevelRadio" @change="changeRadio">
+                        <el-radio :label="0"><span class="colorircle red"></span>红</el-radio>
+                        <el-radio :label="1"><span class="colorCircle yellow"></span>黄</el-radio>
+                        <el-radio :label="2"><span class="colorCircle blue"></span>蓝</el-radio>
+                    </el-radio-group>
+                </el-form-item> -->
+                <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </body>
+
+</html>

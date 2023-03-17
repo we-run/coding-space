@@ -1,0 +1,101 @@
+{
+    "log": {
+        "access": "./access.log",
+        "error": "./error.log",
+        "loglevel": "debug"
+    },
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "protocol": "dokodemo-door",
+            "port": "7008",
+            "tag": "in-door",
+            "settings": {
+                "address": "v.daqiang.me",
+                "port": 4443,
+                "network": "tcp",
+                "timeout": 300,
+                "followRedirect": false,
+                "userLevel": 0
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ],
+                "metadataOnly": false
+            }
+        },
+        {
+            "listen": "0.0.0.0",
+            "protocol": "socks",
+            "port": "7009",
+            "tag": "in-socks",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ],
+                "metadataOnly": false
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "mux": {
+                "enabled": false,
+                "concurrency": 8
+            },
+            "protocol": "vmess",
+            "streamSettings": {
+                "wsSettings": {
+                    "path": "/fe91ac/",
+                    "headers": {
+                        "host": "v.daqiang.me"
+                    }
+                },
+                "tlsSettings": {
+                    "serverName": "v.daqiang.me",
+                    "allowInsecure": true
+                },
+                "security": "tls",
+                "network": "ws"
+            },
+            "tag": "proxy",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "v.daqiang.me",
+                        "users": [
+                            {
+                                "id": "ce98e5cf-91b3-4680-a81c-88c7e0957ef4",
+                                "alterId": 64,
+                                "level": 0,
+                                "security": "aes-128-gcm"
+                            }
+                        ],
+                        "port": 4443
+                    }
+                ]
+            }
+        }
+    ],
+    "dns": {},
+    "routing": {
+        "settings": {
+            "domainStrategy": "AsIs",
+            "rules": [
+                {
+                    "type": "field",
+                    "inboundTag": [
+                        "in-door"
+                    ],
+                    "outboundTag": "proxy"
+                }
+            ]
+        }
+    },
+    "transport": {}
+}
